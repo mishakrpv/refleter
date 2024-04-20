@@ -1,0 +1,17 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+    <AspDotNetVersion>8.0.3</AspDotNetVersion>
+    <AspireVersion>8.0.0-preview.5.24201.12</AspireVersion>
+    <EfVersion>8.0.4</EfVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Aspire -->
+    <PackageVersion Include="Aspire.Hosting.AppHost" Version="$(AspireVersion)"/>
+    <!-- Open Telemetry -->
+    <!-- ASP.NET -->
+    <!-- Entity Framework -->
+    <!-- Miscellaneous -->
+  </ItemGroup>
+</Project>
