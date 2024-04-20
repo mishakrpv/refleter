@@ -1,0 +1,2 @@
+// Run in AppHost project folder
+dotnet run --publisher manifest --output-path manifest.json

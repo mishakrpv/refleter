@@ -14,4 +14,8 @@
         <PackageReference Include="Aspire.Hosting.PostgreSQL" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Identity.Web\Identity.Web.csproj" />
+    </ItemGroup>
+
 </Project>
