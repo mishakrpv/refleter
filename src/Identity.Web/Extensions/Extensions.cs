@@ -16,7 +16,9 @@ public static class Extensions
             .AddEntityFrameworkStores<ApplicationDbContext>();
         builder.Services.AddRazorPages();
         
+        builder.AddIdentityServer();
         builder.AddAuthentication();
+        builder.Services.ConfigureIdentity();
     }
 
     public static void AddHealthChecks(this WebApplicationBuilder builder)
@@ -25,5 +27,13 @@ public static class Extensions
             .AddNpgSql(builder.Configuration.GetConnectionString(
                 Constants.POSTGRES_CONNECTION_NAME) ?? throw new InvalidOperationException($"ConnectionStrings missing value for {Constants.POSTGRES_CONNECTION_NAME}"),
                 name: "PostgresCheck");
+    }
+
+    private static void ConfigureIdentity(this IServiceCollection services)
+    {
+        services.Configure<IdentityOptions>(options =>
+        {
+
+        });
     }
 }

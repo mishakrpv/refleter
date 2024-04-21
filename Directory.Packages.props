@@ -6,6 +6,7 @@
     <AspireVersion>8.0.0-preview.5.24201.12</AspireVersion>
     <EfVersion>8.0.3</EfVersion>
     <HealthChecksVersion>8.0.1</HealthChecksVersion>
+    <DuendeVersion>7.0.4</DuendeVersion>
   </PropertyGroup>
   <ItemGroup>
     <!-- Aspire -->
@@ -26,6 +27,8 @@
     <PackageVersion Include="Microsoft.AspNetCore.Authentication.Twitter" Version="$(AspNetVersion)" />
     <PackageVersion Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(AspNetVersion)" />
     <PackageVersion Include="Microsoft.AspNetCore.Identity.UI" Version="$(AspNetVersion)" />
+    <!-- Identity Server -->
+    <PackageVersion Include="Duende.IdentityServer" Version="$(DuendeVersion)" />
     <!-- Entity Framework -->
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="$(EfVersion)" />
     <!-- Health Checks -->
