@@ -12,6 +12,18 @@ public static class AuthenticationExtensions
                 var googleAuthSection = builder.Configuration.GetSection("Authentication:Google");
                 googleOptions.ClientId = googleAuthSection.GetRequiredValue("ClientId");
                 googleOptions.ClientSecret = googleAuthSection.GetRequiredValue("ClientSecret");
+            })
+            .AddGitHub(gitHubOptions =>
+            {
+                var gitHubAuthSection = builder.Configuration.GetSection("Authentication:GitHub");
+                gitHubOptions.ClientId = gitHubAuthSection.GetRequiredValue("ClientId");
+                gitHubOptions.ClientSecret = gitHubAuthSection.GetRequiredValue("ClientSecret");
+            })
+            .AddTwitter(twitterOptions =>
+            {
+                var twitterAuthSection = builder.Configuration.GetSection("Authentication:Twitter");
+                twitterOptions.ConsumerKey = twitterAuthSection.GetRequiredValue("ConsumerKey");
+                twitterOptions.ConsumerSecret = twitterAuthSection.GetRequiredValue("ConsumerSecret");
             });
     }
 }
