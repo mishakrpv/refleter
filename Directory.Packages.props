@@ -1,9 +1,8 @@
 <Project>
-  
   <PropertyGroup>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
     <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
-    <AspDotNetVersion>8.0.4</AspDotNetVersion>
+    <AspNetVersion>8.0.3</AspNetVersion>
     <AspireVersion>8.0.0-preview.5.24201.12</AspireVersion>
     <EfVersion>8.0.3</EfVersion>
     <HealthChecksVersion>8.0.1</HealthChecksVersion>
@@ -22,15 +21,14 @@
     <PackageVersion Include="OpenTelemetry.Instrumentation.Runtime" Version="1.7.0" />
     <!-- ASP.NET -->
     <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="8.3.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Authentication.Google" Version="$(AspNetVersion)" />
+    <PackageVersion Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(AspNetVersion)" />
+    <PackageVersion Include="Microsoft.AspNetCore.Identity.UI" Version="$(AspNetVersion)" />
     <!-- Entity Framework -->
-    <PackageVersion Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="$(EfVersion)" />
-    <PackageVersion Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(EfVersion)" />
-    <PackageVersion Include="Microsoft.AspNetCore.Identity.UI" Version="$(EfVersion)" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="$(EfVersion)" />
     <!-- Health Checks -->
     <PackageVersion Include="AspNetCore.HealthChecks.NpgSql" Version="$(HealthChecksVersion)" />
     <PackageVersion Include="AspNetCore.HealthChecks.UI.Client" Version="$(HealthChecksVersion)" />
     <!-- Miscellaneous -->
   </ItemGroup>
-  
 </Project>

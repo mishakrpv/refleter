@@ -1,5 +1,6 @@
 ﻿using Identity.Web.Data;
 using Identity.Web.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Identity.Web.Extensions;
 
@@ -14,6 +15,8 @@ public static class Extensions
         builder.Services.AddDefaultIdentity<ApplicationsUser>()
             .AddEntityFrameworkStores<ApplicationDbContext>();
         builder.Services.AddRazorPages();
+        
+        builder.AddAuthentication();
     }
 
     public static void AddHealthChecks(this WebApplicationBuilder builder)
