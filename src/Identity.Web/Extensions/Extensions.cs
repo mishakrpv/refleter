@@ -33,7 +33,23 @@ public static class Extensions
     {
         services.Configure<IdentityOptions>(options =>
         {
+            // Password settings
+            options.Password.RequireDigit = true;
+            options.Password.RequireLowercase = false;
+            options.Password.RequireNonAlphanumeric = false;
+            options.Password.RequireUppercase = false;
+            options.Password.RequiredLength = 6;
 
+            // SignIn settings
+            options.SignIn.RequireConfirmedEmail = true;
+
+            // Lockout settings
+            options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1);
+            options.Lockout.MaxFailedAccessAttempts = 5;
+            options.Lockout.AllowedForNewUsers = true;
+
+            // User settings
+            options.User.RequireUniqueEmail = true;
         });
     }
 }
