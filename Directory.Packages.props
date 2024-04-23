@@ -33,6 +33,7 @@
     <PackageVersion Include="Duende.IdentityServer" Version="$(DuendeVersion)" />
     <!-- Entity Framework -->
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="$(EfVersion)" />
+    <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.2" />
     <!-- Health Checks -->
     <PackageVersion Include="AspNetCore.HealthChecks.NpgSql" Version="$(HealthChecksVersion)" />
     <PackageVersion Include="AspNetCore.HealthChecks.UI.Client" Version="$(HealthChecksVersion)" />
