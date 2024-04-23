@@ -11,11 +11,13 @@ public sealed class Scope
         UserId = userId;
         Name = name;
     }
-    
-    public string UserId { get; private set; }
-    public string Name { get; private set; }
+
+    public string Id { get; private set; } = IdHelper.NewStringId();
     public ScopeIcon Icon { get; private set; } = new();
     public IEnumerable<Secret> Secrets => _secrets.AsReadOnly();
+    public string UserId { get; private set; }
+    public string Name { get; private set; }
+    public DateTime DateCreated { get; private set; } = DateTime.UtcNow;
     
     public void UpdateName(string newName)
     {

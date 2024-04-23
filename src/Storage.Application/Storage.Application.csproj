@@ -7,9 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\" />
-    <Folder Include="Mapping\" />
-    <Folder Include="Queries\" />
+    <PackageReference Include="AutoMapper" />
+    <PackageReference Include="FluentResults" />
+    <PackageReference Include="MediatR" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Storage.DataAccess\Storage.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>

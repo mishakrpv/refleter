@@ -8,6 +8,6 @@ public sealed class ScopeIconEntityConfiguration : IEntityTypeConfiguration<Scop
 {
     public void Configure(EntityTypeBuilder<ScopeIcon> builder)
     {
-        builder.HasKey(si => new { si.ScopeUserId, si.ScopeName });
+        builder.HasKey(si => new { ScopeId = si.Id });
     }
 }

@@ -6,7 +6,10 @@ namespace Storage.DataAccess;
 
 public sealed class StorageContext : DbContext
 {
-    public StorageContext(DbContextOptions<StorageContext> options) : base(options) { }
+    public StorageContext(DbContextOptions<StorageContext> options) : base(options)
+    {
+        Database.EnsureCreated();
+    }
     
     public DbSet<Scope> Scopes { get; set; }
     public DbSet<ScopeIcon> Icons { get; set; }
