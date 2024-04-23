@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Storage.Application.Commands.CreateScope;
 using Storage.Application.Commands.DeleteScope;
+using Storage.Application.Commands.UpdateScope;
 using Storage.Application.Queries;
 
 namespace Storage.API.Controllers;
@@ -31,12 +32,22 @@ public sealed class ScopeController(IMediator mediator, IQueries queries) : Root
         return result.IsSuccess ? Ok(result.Value) : NotFound(result.Errors.First().Message);
     }
 
-    [HttpDelete]
-    [Route("{id}")]
-    [Route("delete/{id}")]
-    public async Task<IActionResult> DeleteScope(string id)
+    [HttpPut]
+    [Route("")]
+    [Route("update")]
+    public async Task<IActionResult> UpdateScope([FromBody] UpdateScopeRequest request)
     {
-        var result = await _mediator.Send(new DeleteScopeRequest(id));
+        var result = await _mediator.Send(request);
+
+        return result.IsSuccess ? Ok(result.Value) : NotFound(result.Errors.First().Message);
+    }
+
+    [HttpDelete]
+    [Route("")]
+    [Route("delete")]
+    public async Task<IActionResult> DeleteScope([FromBody] DeleteScopeRequest request)
+    {
+        var result = await _mediator.Send(request);
 
         return result.IsSuccess ? Ok("The scope was successfully deleted.") : NotFound(result.Errors.First().Message);
     }
