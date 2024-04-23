@@ -16,7 +16,7 @@ public sealed class Queries(StorageContext context, IMapper mapper) : IQueries
         var scope = await _context.Scopes
             .Include(s => s.Icon)
             .Include(s => s.Secrets)
-            .FirstOrDefaultAsync();
+            .FirstOrDefaultAsync(s => s.Id == id);
 
         if (scope is null)
         {
