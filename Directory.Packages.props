@@ -41,5 +41,6 @@
     <PackageVersion Include="MediatR" Version="12.2.0" />
     <PackageVersion Include="AutoMapper" Version="13.0.1" />
     <PackageVersion Include="Hellang.Middleware.ProblemDetails" Version="6.5.1" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 </Project>
