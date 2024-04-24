@@ -15,9 +15,4 @@
     <ProjectReference Include="..\Storage.DataAccess\Storage.DataAccess.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Commands\DeleteSecret\" />
-    <Folder Include="Commands\UpdateSecret\" />
-  </ItemGroup>
-
 </Project>

@@ -31,6 +31,8 @@ public sealed class Queries(StorageContext context, IMapper mapper) : IQueries
     {
         var scopes = await _context.Scopes
             .Where(s => s.UserId == userId)
+            .Include(s => s.Icon)
+            .Include(s => s.Secrets)
             .Select(s => _mapper.Map<ScopeDTO>(s))
             .ToListAsync();
 

@@ -1,7 +1,5 @@
-﻿using System.Data;
-using AutoMapper;
+﻿using AutoMapper;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Storage.Application.Dtos;
 using Storage.DataAccess;
 using Storage.Entities.Models.ScopeAggregate;

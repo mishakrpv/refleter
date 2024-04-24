@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Storage.Application.Commands.AddSecret;
+using Storage.Application.Commands.DeleteSecret;
+using Storage.Application.Commands.UpdateSecret;
 using Storage.Application.Queries;
 
 namespace Storage.API.Controllers;
@@ -18,5 +20,25 @@ public sealed class SecretController(IMediator mediator, IQueries queries) : Roo
         await _mediator.Send(request);
 
         return Ok("The secret was successfully added to scope.");
+    }
+    
+    [HttpPut]
+    [Route("")]
+    [Route("update")]
+    public async Task<IActionResult> UpdateSecret([FromBody] UpdateSecretRequest request)
+    {
+        await _mediator.Send(request);
+
+        return Ok("The secret was successfully updated.");
+    }
+
+    [HttpDelete]
+    [Route("")]
+    [Route("delete")]
+    public async Task<IActionResult> DeleteSecret([FromBody] DeleteSecretRequest request)
+    {
+        await _mediator.Send(request);
+        
+        return Ok("The secret was successfully deleted.");
     }
 }
