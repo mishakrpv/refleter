@@ -28,6 +28,14 @@ public sealed class ScopeController(IMediator mediator, IQueries queries) : Root
         return Ok(await _queries.GetScope(id));
     }
 
+    [HttpGet]
+    [Route("by/{userId}")]
+    [Route("get/by/{userId}")]
+    public async Task<IActionResult> GetScopesByUserId(string userId)
+    {
+        return Ok(await _queries.GetScopesByUserId(userId));
+    }
+
     [HttpPut]
     [Route("")]
     [Route("update")]

@@ -26,4 +26,14 @@ public sealed class Queries(StorageContext context, IMapper mapper) : IQueries
 
         return _mapper.Map<ScopeDTO>(scope);
     }
+
+    public async Task<IEnumerable<ScopeDTO>> GetScopesByUserId(string userId)
+    {
+        var scopes = await _context.Scopes
+            .Where(s => s.UserId == userId)
+            .Select(s => _mapper.Map<ScopeDTO>(s))
+            .ToListAsync();
+
+        return scopes;
+    }
 }
