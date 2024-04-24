@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
-using FluentResults;
 using Microsoft.EntityFrameworkCore;
 using Storage.Application.Dtos;
 using Storage.DataAccess;
+using Storage.Entities.Exceptions;
+using Storage.Entities.Models.ScopeAggregate;
 
 namespace Storage.Application.Queries;
 
@@ -11,7 +12,7 @@ public sealed class Queries(StorageContext context, IMapper mapper) : IQueries
     private readonly StorageContext _context = context;
     private readonly IMapper _mapper = mapper;
     
-    public async Task<Result<ScopeDTO>> GetScope(string id)
+    public async Task<ScopeDTO> GetScope(string id)
     {
         var scope = await _context.Scopes
             .Include(s => s.Icon)
@@ -20,7 +21,7 @@ public sealed class Queries(StorageContext context, IMapper mapper) : IQueries
 
         if (scope is null)
         {
-            return Result.Fail($"Scope with id {id} not found.");
+            throw new EntityNotFoundException(typeof(Scope), id);
         }
 
         return _mapper.Map<ScopeDTO>(scope);

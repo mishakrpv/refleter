@@ -17,9 +17,7 @@ public sealed class ScopeController(IMediator mediator, IQueries queries) : Root
     [Route("create")]
     public async Task<IActionResult> CreateScope([FromBody] CreateScopeRequest request)
     {
-        var result = await _mediator.Send(request);
-
-        return result.IsSuccess ? Ok(result.Value) : BadRequest(result.Errors.First().Message);
+        return Ok(await _mediator.Send(request));
     }
 
     [HttpGet]
@@ -27,9 +25,7 @@ public sealed class ScopeController(IMediator mediator, IQueries queries) : Root
     [Route("get/{id}")]
     public async Task<IActionResult> GetScope(string id)
     {
-        var result = await _queries.GetScope(id);
-
-        return result.IsSuccess ? Ok(result.Value) : NotFound(result.Errors.First().Message);
+        return Ok(await _queries.GetScope(id));
     }
 
     [HttpPut]
@@ -37,9 +33,7 @@ public sealed class ScopeController(IMediator mediator, IQueries queries) : Root
     [Route("update")]
     public async Task<IActionResult> UpdateScope([FromBody] UpdateScopeRequest request)
     {
-        var result = await _mediator.Send(request);
-
-        return result.IsSuccess ? Ok(result.Value) : NotFound(result.Errors.First().Message);
+        return Ok(await _mediator.Send(request));
     }
 
     [HttpDelete]
@@ -47,8 +41,8 @@ public sealed class ScopeController(IMediator mediator, IQueries queries) : Root
     [Route("delete")]
     public async Task<IActionResult> DeleteScope([FromBody] DeleteScopeRequest request)
     {
-        var result = await _mediator.Send(request);
+        await _mediator.Send(request);
 
-        return result.IsSuccess ? Ok("The scope was successfully deleted.") : NotFound(result.Errors.First().Message);
+        return Ok("The scope was successfully deleted.");
     }
 }

@@ -1,6 +1,5 @@
-﻿using FluentResults;
-using MediatR;
+﻿using MediatR;
 
 namespace Storage.Application.Commands.DeleteScope;
 
-public sealed record DeleteScopeRequest(string Id) : IRequest<Result>;
+public sealed record DeleteScopeRequest(string Id) : IRequest;

@@ -1,24 +1,25 @@
 ﻿using AutoMapper;
-using FluentResults;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Storage.Application.Dtos;
 using Storage.DataAccess;
+using Storage.Entities.Exceptions;
+using Storage.Entities.Models.ScopeAggregate;
 
 namespace Storage.Application.Commands.UpdateScope;
 
-public sealed class UpdateScopeRequestHandler(StorageContext context, IMapper mapper) : IRequestHandler<UpdateScopeRequest, Result<ScopeDTO>>
+public sealed class UpdateScopeRequestHandler(StorageContext context, IMapper mapper) : IRequestHandler<UpdateScopeRequest, ScopeDTO>
 {
     private readonly StorageContext _context = context;
     private readonly IMapper _mapper = mapper;
     
-    public async Task<Result<ScopeDTO>> Handle(UpdateScopeRequest request, CancellationToken cancellationToken)
+    public async Task<ScopeDTO> Handle(UpdateScopeRequest request, CancellationToken cancellationToken)
     {
         var scope = await _context.Scopes.FirstOrDefaultAsync(s => s.Id == request.Id);
         
         if (scope is null)
         {
-            return Result.Fail($"Scope with id {request.Id} not found.");
+            throw new EntityNotFoundException(typeof(Scope), request.Id);
         }
         
         scope.UpdateName(request.Name);

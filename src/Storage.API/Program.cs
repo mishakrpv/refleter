@@ -1,3 +1,4 @@
+using Hellang.Middleware.ProblemDetails;
 using Refleter.ServiceDefaults;
 using Storage.API.Extensions;
 
@@ -9,6 +10,8 @@ builder.AddDefaultOpenApi();
 builder.AddHealthChecks();
 
 var app = builder.Build();
+
+app.UseProblemDetails();
 
 app.UseDefaultOpenApi();
 app.MapDefaultEndpoints();
