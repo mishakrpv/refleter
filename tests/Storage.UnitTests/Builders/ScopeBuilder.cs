@@ -1,5 +1,4 @@
-﻿using System.Security.Cryptography;
-using Storage.Entities.Models.ScopeAggregate;
+﻿using Storage.Entities.Models.ScopeAggregate;
 
 namespace Storage.UnitTests.Builders;
 
@@ -19,7 +18,6 @@ public sealed class ScopeBuilder : AbstractBuilder<Scope>
         {
             Entity.AddSecret(secret.Name, secret.Value);
         }
-
         return this;
     }
     
