@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Storage.Application.Dtos;
 using Storage.DataAccess;
 using Storage.Entities.Exceptions;
 using Storage.Entities.Models.ScopeAggregate;

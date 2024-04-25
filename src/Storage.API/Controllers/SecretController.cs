@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Storage.Application.Commands.AddSecret;
 using Storage.Application.Commands.DeleteSecret;
 using Storage.Application.Commands.UpdateSecret;
-using Storage.Application.Queries;
 
 namespace Storage.API.Controllers;
 
@@ -18,7 +17,7 @@ public sealed class SecretController(IMediator mediator) : RootController
     {
         await _mediator.Send(request);
 
-        return Ok("The secret was successfully added to scope.");
+        return Ok(new { message = "The secret was successfully added to scope." });
     }
     
     [HttpPut]
@@ -28,7 +27,7 @@ public sealed class SecretController(IMediator mediator) : RootController
     {
         await _mediator.Send(request);
 
-        return Ok("The secret was successfully updated.");
+        return Ok(new { message = "The secret was successfully updated." });
     }
 
     [HttpDelete]
@@ -38,6 +37,6 @@ public sealed class SecretController(IMediator mediator) : RootController
     {
         await _mediator.Send(request);
         
-        return Ok("The secret was successfully deleted.");
+        return Ok(new { message = "The secret was successfully deleted." });
     }
 }

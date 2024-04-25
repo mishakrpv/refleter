@@ -33,7 +33,7 @@ public static class Extensions
             options.Map<DbUpdateException>((context, ex) => new ProblemDetails
             {
                 Title = "Entity cannot be saved.",
-                Detail = "A scope with this name already exists.",
+                Detail = ex.Message,
                 Status = StatusCodes.Status409Conflict,
                 Type = $"https://httpstatuses.com/{StatusCodes.Status409Conflict}",
                 Instance = context.Request.Path

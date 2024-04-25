@@ -9,6 +9,7 @@ public sealed class Secret
     }
 
     public string Id { get; private set; } = IdHelper.NewStringId();
+    public string ScopeId { get; private set; } = null!;
     public Scope Scope { get; private set; } = null!;
     public string Name { get; private set; }
     public string Value { get; private set; }

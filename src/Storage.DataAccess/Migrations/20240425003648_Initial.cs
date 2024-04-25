@@ -71,9 +71,10 @@ namespace Storage.DataAccess.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Secrets_ScopeId",
+                name: "IX_Secrets_ScopeId_Name_key",
                 table: "Secrets",
-                column: "ScopeId");
+                columns: new[] { "ScopeId", "Name" },
+                unique: true);
         }
 
         /// <inheritdoc />

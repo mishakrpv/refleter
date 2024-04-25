@@ -51,6 +51,6 @@ public sealed class ScopeController(IMediator mediator, IQueries queries) : Root
     {
         await _mediator.Send(request);
 
-        return Ok("The scope was successfully deleted.");
+        return Ok(new { message = "The scope was successfully deleted." });
     }
 }

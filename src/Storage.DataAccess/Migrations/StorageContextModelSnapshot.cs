@@ -83,7 +83,8 @@ namespace Storage.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ScopeId");
+                    b.HasIndex(new[] { "ScopeId", "Name" }, "IX_Secrets_ScopeId_Name_key")
+                        .IsUnique();
 
                     b.ToTable("Secrets");
                 });

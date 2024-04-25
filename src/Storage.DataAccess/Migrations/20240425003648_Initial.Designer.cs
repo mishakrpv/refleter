@@ -12,7 +12,7 @@ using Storage.DataAccess;
 namespace Storage.DataAccess.Migrations
 {
     [DbContext(typeof(StorageContext))]
-    [Migration("20240423222014_Initial")]
+    [Migration("20240425003648_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -86,7 +86,8 @@ namespace Storage.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ScopeId");
+                    b.HasIndex(new[] { "ScopeId", "Name" }, "IX_Secrets_ScopeId_Name_key")
+                        .IsUnique();
 
                     b.ToTable("Secrets");
                 });

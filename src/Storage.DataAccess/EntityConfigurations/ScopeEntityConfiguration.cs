@@ -18,7 +18,8 @@ public sealed class ScopeEntityConfiguration : IEntityTypeConfiguration<Scope>
 
         builder.HasMany(s => s.Secrets)
             .WithOne(s => s.Scope)
-            .OnDelete(DeleteBehavior.Cascade);
+            .OnDelete(DeleteBehavior.Cascade)
+            .IsRequired();
 
         builder.HasIndex(s => new { s.UserId, s.Name }, "IX_Scopes_UserId_Name_key")
             .IsUnique();
