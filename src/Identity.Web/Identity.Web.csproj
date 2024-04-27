@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Aspire.Confluent.Kafka" />
     <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" />
     <PackageReference Include="AspNet.Security.OAuth.GitHub" />
     <PackageReference Include="Duende.IdentityServer" />
