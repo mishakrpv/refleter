@@ -4,6 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 builder.AddServices();
+builder.AddHealthChecks();
 
 var app = builder.Build();
 
