@@ -4,9 +4,9 @@
     ViewData["Title"] = "Register";
 }
 
-<div class="register-page-container">
+<div class="signin-page-container">
     <div class="column">
-        <div class="register-title">
+        <div class="signin-title">
             <span class="title-italic">Store app secrets here.</span>
             <div></div>
             Create your Refleter account.
@@ -44,7 +44,7 @@
                 
                 <label asp-for="Input.Email" class="label-for-input">Email</label>
                 <div class="form-floating mb-3 form-column-item">
-                    <input asp-for="Input.Email" class="form-control form-control-fixed" autocomplete="username" aria-required="true" placeholder="email@example.com"/>
+                    <input asp-for="Input.Email" class="form-control form-control-fixed" autocomplete="username" aria-required="true" placeholder="name@example.com"/>
                 </div>
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
                 
@@ -64,7 +64,7 @@
                 </div>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                 
-                <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary btn-column-item" style="margin-top: 4px;">Continue</button>
+                <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary btn-column-item" style="margin-top: 4px;">Sign up</button>
             </form>
         </div>  
         <div style="width: 100%; margin-top: 64px; margin-bottom: 0; font-size: 12px; color: rgba(55, 53, 47, 0.65); text-align: center; text-wrap: normal;">

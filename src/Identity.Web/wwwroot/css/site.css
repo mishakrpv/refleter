@@ -39,7 +39,7 @@ body {
   align-items: center;
 }
 
-.register-page-container {
+.signin-page-container {
   justify-content: center;
   display: flex;
 }
@@ -75,6 +75,10 @@ body {
   font-size: 12px;
 }
 
+.checkbox-fixed {
+  margin-bottom: 0 !important;
+}
+
 .form-column-item {
   white-space: nowrap;
   overflow: hidden;
@@ -101,7 +105,13 @@ body {
   outline: 0 !important;
 }
 
-.register-title {
+.disable-outline:focus,
+.disable-outline:active {
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
+.signin-title {
   margin: 60px 0 20px 0;
   font-size: 22px;
   color: #ACABA9;
@@ -123,6 +133,7 @@ body {
   color: #37352F;
   margin-top: 8px;
   border: 1px solid rgba(55, 53, 47, 0.16);
+  transition: 0s;
 }
 
 .provider-btn:hover {
@@ -131,8 +142,29 @@ body {
   border-color: rgba(55, 53, 47, 0.16);
 }
 
+.provider-btn:focus,
+.provider-btn:active {
+  background-color: rgba(55, 53, 47, 0.08) !important;
+  border-color: rgba(55, 53, 47, 0.16) !important;
+  color: inherit !important;
+}
+
+.provider-btn:hover:active {
+  background-color: rgba(55, 53, 47, 0.16) !important;
+}
+
 .img-provider-mark {
   margin-right: 6px;
+}
+
+.signin-actions {
+  font-size: 12px;
+  color: rgba(55, 53, 47, 0.65);
+}
+
+.signin-action {
+  margin-top: 8px;
+  margin-bottom: 0;
 }
 
 .link-blue {
@@ -142,4 +174,12 @@ body {
 
 .link-blue:hover {
   color: #0d6efd;
+}
+
+.form-control {
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
+.form-control:focus {
 }

@@ -41,7 +41,7 @@ public static class Extensions
             options.Password.RequiredLength = 6;
 
             // SignIn settings
-            options.SignIn.RequireConfirmedEmail = true;
+            options.SignIn.RequireConfirmedEmail = false;
 
             // Lockout settings
             options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1);
