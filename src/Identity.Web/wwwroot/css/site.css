@@ -159,6 +159,7 @@ body {
 
 .img-provider-mark {
   margin-right: 6px;
+  pointer-events: none;
 }
 
 .signin-actions {
