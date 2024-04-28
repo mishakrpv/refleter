@@ -18,4 +18,7 @@ var storageApi = builder.AddProject<Projects.Storage_API>("storageapi")
 var accessControlApi = builder.AddProject<Projects.AccessControl_API>("accesscontrolapi")
     .WithReference(accessControlDb);
 
+var identityApi = builder.AddProject<Projects.Identity_API>("identityapi")
+    .WithReference(identityDb);
+
 builder.Build().Run();

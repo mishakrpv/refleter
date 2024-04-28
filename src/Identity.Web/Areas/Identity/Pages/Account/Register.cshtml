@@ -1,0 +1,78 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="signin-page-container">
+    <div class="column">
+        <div class="signin-title">
+            <span class="title-italic">Store app secrets here.</span>
+            <div></div>
+            Create your Refleter account.
+        </div>
+        <section class="external-login-options">
+            @{
+                if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                {
+                    <div>
+                        <p>
+                            There are no external authentication services configured.
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                        @foreach (var provider in Model.ExternalLogins!)
+                        {
+                            <button type="submit" class="btn btn-primary provider-btn btn-column-item" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
+                                <img class="img-provider-mark" width="16" height="16" src="~/images/@provider.DisplayName-mark.svg" alt="@provider.DisplayName">
+                                Continue with @provider.DisplayName
+                            </button>
+                        }
+                    </form>
+                }
+            }
+        </section>
+        <div style="display: flex; align-items: center; justify-content: center; pointer-events: none; width: 100%; height: 42px; flex: 0 0 auto;">
+            <div role="separator" style="width: 100%; height: 1px; visibility: visible; border-bottom: 1px solid rgba(55, 53, 47, 0.16);"></div>
+        </div>
+        <div class="col-md-4 col-fixed">
+            <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                
+                <label asp-for="Input.Email" class="label-for-input">Email</label>
+                <div class="form-floating mb-3 form-column-item">
+                    <input asp-for="Input.Email" class="form-control form-control-fixed" autocomplete="username" aria-required="true" placeholder="name@example.com"/>
+                </div>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                
+                <div></div>
+                
+                <label asp-for="Input.Password" class="label-for-input">Password</label>
+                <div class="form-floating mb-3 form-column-item">
+                    <input asp-for="Input.Password" class="form-control form-control-fixed" autocomplete="new-password" aria-required="true" placeholder="Enter your password"/>
+                </div>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                
+                <div></div>
+                
+                <label asp-for="Input.ConfirmPassword" class="label-for-input">Confirm password</label>
+                <div class="form-floating mb-3 form-column-item">
+                    <input asp-for="Input.ConfirmPassword" class="form-control form-control-fixed" autocomplete="new-password" aria-required="true" placeholder="Confirm your password"/>
+                </div>
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                
+                <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary btn-column-item" style="margin-top: 4px;">Sign up</button>
+            </form>
+        </div>  
+        <div style="width: 100%; margin-top: 64px; margin-bottom: 0; font-size: 12px; color: rgba(55, 53, 47, 0.65); text-align: center; text-wrap: normal;">
+            <p style="margin-bottom: 0;">By continuing, you acknowledge that you understand and agree to the <a class="link-blue" asp-area="" asp-page="/Privacy">Privacy Policy</a></p>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

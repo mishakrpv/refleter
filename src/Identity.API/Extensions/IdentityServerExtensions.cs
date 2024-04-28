@@ -1,15 +1,30 @@
 ﻿using Duende.IdentityServer.Models;
 
-namespace Identity.Web.Extensions;
+namespace Identity.API.Extensions;
 
 public static class IdentityServerExtensions
 {
     public static void AddIdentityServer(this WebApplicationBuilder builder)
     {
         builder.Services.AddIdentityServer()
+            .AddInMemoryIdentityResources(Resources)
+            .AddInMemoryApiResources(Apis)
             .AddInMemoryApiScopes(ApiScopes)
             .AddInMemoryClients(Clients);
     }
+    
+    private static IEnumerable<IdentityResource> Resources =>
+        new List<IdentityResource>
+        {
+            new IdentityResources.OpenId(),
+            new IdentityResources.Profile()
+        };
+    
+    private static IEnumerable<ApiResource> Apis => 
+        new List<ApiResource>
+        {
+            new(name: "storage", displayName: "Storage API")
+        };
     
     private static IEnumerable<ApiScope> ApiScopes =>
         new ApiScope[]

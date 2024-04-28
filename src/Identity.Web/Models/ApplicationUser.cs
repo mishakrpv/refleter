@@ -2,4 +2,4 @@
 
 namespace Identity.Web.Models;
 
-public sealed class ApplicationsUser : IdentityUser { }
+public sealed class ApplicationUser : IdentityUser { }

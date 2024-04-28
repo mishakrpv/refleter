@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AccessControl.API\AccessControl.API.csproj" />
+    <ProjectReference Include="..\Identity.API\Identity.API.csproj" />
     <ProjectReference Include="..\Identity.Web\Identity.Web.csproj" />
     <ProjectReference Include="..\Storage.API\Storage.API.csproj" />
   </ItemGroup>
