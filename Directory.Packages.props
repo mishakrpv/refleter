@@ -31,6 +31,7 @@
     <PackageVersion Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
     <!-- Identity Server -->
     <PackageVersion Include="Duende.IdentityServer" Version="$(DuendeVersion)" />
+    <PackageVersion Include="Duende.IdentityServer.AspNetIdentity" Version="$(DuendeVersion)" />
     <!-- Entity Framework -->
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="$(EfVersion)" />
     <!-- Health Checks -->
