@@ -188,3 +188,43 @@ body {
 
 .form-control:focus {
 }
+
+.nav-link-default {
+  color: #212529;
+}
+
+.manage-title {
+  font-size: 22px;
+  color: #212529;
+  margin-bottom: 10px;
+}
+
+.nav-bordered-right {
+  border-right: 1px solid rgba(55, 53, 47, 0.16);
+  height: 80vh;
+}
+
+.manage-provider-btn {
+  max-width: 312px;
+}
+
+.btn-width-restricted {
+  max-width: 240px;
+}
+
+.pd-btns {
+  display: flex;
+  flex-direction: row;
+}
+
+.pd-btn {
+  margin-right: 8px;
+  background: transparent;
+  color: #37352F;
+  border-color: rgba(55, 53, 47, 0.16);
+}
+
+.delete-pd-strong {
+  font-size: 14px;
+  max-width: 320px;
+}
