@@ -13,7 +13,7 @@ public sealed class UserCreatedIntegrationEventHandler(StorageContext context, I
     
     public async Task Handle(UserCreatedIntegrationEvent @event)
     {
-        logger.LogInformation("Handling integration event: {IntegrationEventId} - ({@IntegrationEvent})", @event.Id, @event);
+        _logger.LogInformation("Handling integration event: {IntegrationEventId} - ({@IntegrationEvent})", @event.Id, @event);
         
         var scope = new Scope(@event.UserId, "default");
         _context.Scopes.Add(scope);
