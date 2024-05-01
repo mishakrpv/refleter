@@ -1,6 +1,11 @@
-﻿using Hellang.Middleware.ProblemDetails;
+﻿using System.Text.Json.Serialization;
+using EventBus.Extensions;
+using EventBus.RabbitMQ;
+using Hellang.Middleware.ProblemDetails;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Storage.API.IntegrationEvents.EventHandling;
+using Storage.API.IntegrationEvents.Events;
 using Storage.Application.Commands.CreateScope;
 using Storage.Application.Mapping;
 using Storage.Application.Queries;
@@ -19,6 +24,10 @@ public static class Extensions
         builder.Services.AddMediatR(config => config.RegisterServicesFromAssembly(typeof(CreateScopeRequest).Assembly));
         
         builder.Services.AddScoped<IQueries, Queries>();
+
+        builder.AddRabbitMqEventBus(Constants.EVENT_BUS_CONNECTION_NAME)
+            .AddSubscription<UserCreatedIntegrationEvent, UserCreatedIntegrationEventHandler>()
+            .ConfigureJsonOptions(options => options.TypeInfoResolverChain.Add(IntegrationEventContext.Default));
 
         builder.Services.AddControllers();
         builder.AddProblemDetails();
@@ -57,4 +66,10 @@ public static class Extensions
                 Constants.POSTGRES_CONNECTION_NAME) ?? throw new InvalidOperationException($"ConnectionStrings missing value for {Constants.POSTGRES_CONNECTION_NAME}"),
                 name: "PostgresCheck");
     }
+}
+
+[JsonSerializable(typeof(UserCreatedIntegrationEvent))]
+partial class IntegrationEventContext : JsonSerializerContext
+{
+
 }

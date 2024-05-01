@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EventBus.RabbitMQ\EventBus.RabbitMQ.csproj" />
     <ProjectReference Include="..\Refleter.ServiceDefaults\Refleter.ServiceDefaults.csproj" />
   </ItemGroup>
 

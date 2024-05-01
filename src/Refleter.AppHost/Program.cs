@@ -6,14 +6,15 @@ var identityDb = postgres.AddDatabase("identitydb");
 var storageDb = postgres.AddDatabase("storagedb");
 var accessControlDb = postgres.AddDatabase("accesscontroldb");
 
-var messaging = builder.AddKafka("messaging");
+var eventBus = builder.AddRabbitMQ("eventbus");
 
 var identityWeb = builder.AddProject<Projects.Identity_Web>("identityweb")
     .WithReference(identityDb)
-    .WithReference(messaging);
+    .WithReference(eventBus);
 
 var storageApi = builder.AddProject<Projects.Storage_API>("storageapi")
-    .WithReference(storageDb);
+    .WithReference(storageDb)
+    .WithReference(eventBus);
 
 var accessControlApi = builder.AddProject<Projects.AccessControl_API>("accesscontrolapi")
     .WithReference(accessControlDb);

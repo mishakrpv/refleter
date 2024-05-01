@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EventBus.RabbitMQ\EventBus.RabbitMQ.csproj" />
     <ProjectReference Include="..\Refleter.ServiceDefaults\Refleter.ServiceDefaults.csproj" />
     <ProjectReference Include="..\Storage.Application\Storage.Application.csproj" />
     <ProjectReference Include="..\Storage.DataAccess\Storage.DataAccess.csproj" />
