@@ -16,7 +16,7 @@ public sealed class UserCreatedIntegrationEventHandler(StorageContext context, I
         _logger.LogInformation("Handling integration event: {IntegrationEventId} - ({@IntegrationEvent})", @event.Id, @event);
         
         var scope = new Scope(@event.UserId, "default");
-        _context.Scopes.Add(scope);
+        await _context.AddAsync(scope);
         await _context.SaveChangesAsync();
     }
 }

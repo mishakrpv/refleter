@@ -1,4 +1,5 @@
-﻿using AccessControl.Infrastructure;
+﻿using System.Reflection;
+using AccessControl.Infrastructure;
 
 namespace AccessControl.API.Extensions;
 
@@ -7,6 +8,8 @@ public static class Extensions
     public static void AddServices(this WebApplicationBuilder builder)
     {
         builder.AddNpgsqlDbContext<AccessControlContext>(Constants.POSTGRES_CONNECTION_NAME);
+
+        builder.Services.AddMediatR(config => config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
     }
     
     public static void AddHealthChecks(this WebApplicationBuilder builder)
