@@ -2,5 +2,5 @@
 
 public interface IAccessControlService
 {
-    
+    Task<KeyValuePair<string, bool>> VerifyAccessKey(string secretKey);
 }

@@ -1,6 +1,4 @@
-﻿using System.Buffers.Text;
-using System.Security.Cryptography;
-using System.Text;
+﻿using System.Security.Cryptography;
 using AccessControl.API.Dtos;
 using AccessControl.Entities.Models;
 using AccessControl.Infrastructure;
@@ -32,7 +30,7 @@ public sealed class CreateAccessKeyRequestHandler(AccessControlContext context) 
     {
         return new AccessKeyOneTimeDTO
         {
-            Key = key.Key,
+            KeyId = key.Id,
             SecretKey = key.SecretKey
         };
     }

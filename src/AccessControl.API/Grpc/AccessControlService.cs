@@ -15,12 +15,12 @@ public sealed class AccessControlService(
     {
         if (_logger.IsEnabled(LogLevel.Debug))
         {
-            _logger.LogDebug("Begin VerifyAccessKey call from method {Method} for key with id: {Id}", context.Method, request.Key);
+            _logger.LogDebug("Begin VerifyAccessKey call from method {Method} for key: {Key}", context.Method, request.SecretKey);
         }
         
         VerificationResponse response = new() { Verified = false };
 
-        var accessKey = await _dbContext.AccessKeys.FirstOrDefaultAsync(ak => ak.Key == request.Key && ak.SecretKey == request.SecretKey);
+        var accessKey = await _dbContext.AccessKeys.FirstOrDefaultAsync(ak => ak.SecretKey == request.SecretKey);
 
         if (accessKey is null || !accessKey.Active)
         {
@@ -28,6 +28,7 @@ public sealed class AccessControlService(
         }
 
         response.Verified = true;
+        response.UserId = accessKey.UserId;
         return response;
     }
 }

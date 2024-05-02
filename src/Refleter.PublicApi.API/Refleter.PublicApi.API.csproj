@@ -10,4 +10,10 @@
     <PackageReference Include="Aspire.StackExchange.Redis" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Refleter.PublicApi.Infrastructure.Implementation\Refleter.PublicApi.Infrastructure.Implementation.csproj" />
+    <ProjectReference Include="..\Refleter.PublicApi.Infrastructure.Interfaces\Refleter.PublicApi.Infrastructure.Interfaces.csproj" />
+    <ProjectReference Include="..\Refleter.ServiceDefaults\Refleter.ServiceDefaults.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -13,12 +13,14 @@
     <PackageReference Include="Aspire.Hosting.AppHost" />
     <PackageReference Include="Aspire.Hosting.PostgreSQL" />
     <PackageReference Include="Aspire.Hosting.RabbitMQ" />
+    <PackageReference Include="Aspire.Hosting.Redis" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AccessControl.API\AccessControl.API.csproj" />
     <ProjectReference Include="..\Identity.API\Identity.API.csproj" />
     <ProjectReference Include="..\Identity.Web\Identity.Web.csproj" />
+    <ProjectReference Include="..\Refleter.PublicApi.API\Refleter.PublicApi.API.csproj" />
     <ProjectReference Include="..\Storage.API\Storage.API.csproj" />
     <ProjectReference Include="..\WebApp\WebApp.csproj" />
   </ItemGroup>

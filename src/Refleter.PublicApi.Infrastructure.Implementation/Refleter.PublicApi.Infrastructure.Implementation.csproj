@@ -12,6 +12,13 @@
 
   <ItemGroup>
     <PackageReference Include="Aspire.StackExchange.Redis" />
+    <PackageReference Include="Grpc.AspNetCore" />
+    <PackageReference Include="Grpc.AspNetCore.Server.ClientFactory" />
+    <PackageReference Include="Grpc.Tools" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="..\AccessControl.API\Proto\accesscontrol.proto" GrpcServices="Client" />
   </ItemGroup>
 
 </Project>

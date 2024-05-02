@@ -38,4 +38,20 @@ public sealed class Queries(StorageContext context, IMapper mapper) : IQueries
 
         return scopes;
     }
+
+    public async Task<ScopeDTO> GetScopeByUserIdAndName(string userId, string name)
+    {
+        var scope = await _context.Scopes
+            .Where(s => s.UserId == userId && s.Name == name)
+            .Include(s => s.Secrets)
+            .Select(s => _mapper.Map<ScopeDTO>(s))
+            .FirstOrDefaultAsync();
+
+        if (scope is null)
+        {
+            throw new EntityNotFoundException(typeof(Scope), $"{userId}:{name}");
+        }
+
+        return scope;
+    }
 }

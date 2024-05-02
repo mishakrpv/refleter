@@ -26,7 +26,9 @@ public static class Extensions
     {
         builder.Services.AddHealthChecks()
             .AddNpgSql(builder.Configuration.GetConnectionString(
-                Constants.POSTGRES_CONNECTION_NAME) ?? throw new InvalidOperationException($"ConnectionStrings missing value for {Constants.POSTGRES_CONNECTION_NAME}"),
+                Constants.POSTGRES_CONNECTION_NAME) ??
+                    throw new InvalidOperationException(
+                        $"ConnectionStrings missing value for {Constants.POSTGRES_CONNECTION_NAME}"),
                 name: "PostgresCheck");
     }
 }
