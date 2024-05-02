@@ -27,21 +27,20 @@ namespace AccessControl.Infrastructure.Migrations
                     b.Property<string>("Key")
                         .HasColumnType("text");
 
+                    b.Property<string>("SecretKey")
+                        .HasColumnType("text");
+
                     b.Property<bool>("Active")
                         .HasColumnType("boolean");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("SecretKey")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("Key");
+                    b.HasKey("Key", "SecretKey");
 
                     b.ToTable("AccessKeys");
                 });

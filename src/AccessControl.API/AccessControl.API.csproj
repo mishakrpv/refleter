@@ -14,17 +14,17 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="MediatR" />
+    <PackageReference Include="Grpc.AspNetCore" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Proto\accesscontrol.proto" GrpcServices="Server" />
   </ItemGroup>
   
   <ItemGroup>
     <ProjectReference Include="..\EventBus.RabbitMQ\EventBus.RabbitMQ.csproj" />
     <ProjectReference Include="..\AccessControl.Infrastructure\AccessControl.Infrastructure.csproj" />
     <ProjectReference Include="..\Refleter.ServiceDefaults\Refleter.ServiceDefaults.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Application\Mapping\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>

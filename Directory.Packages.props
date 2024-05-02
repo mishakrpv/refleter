@@ -6,6 +6,7 @@
     <AspireVersion>8.0.0-preview.5.24201.12</AspireVersion>
     <EfVersion>8.0.3</EfVersion>
     <HealthChecksVersion>8.0.1</HealthChecksVersion>
+    <GrpcVersion>2.62.0</GrpcVersion>
     <DuendeVersion>7.0.4</DuendeVersion>
   </PropertyGroup>
   <ItemGroup>
@@ -45,6 +46,10 @@
     <!-- Health Checks -->
     <PackageVersion Include="AspNetCore.HealthChecks.NpgSql" Version="$(HealthChecksVersion)" />
     <PackageVersion Include="AspNetCore.HealthChecks.UI.Client" Version="$(HealthChecksVersion)" />
+    <!-- gRPC -->
+    <PackageVersion Include="Grpc.AspNetCore" Version="$(GrpcVersion)" />
+    <PackageVersion Include="Grpc.AspNetCore.Server.ClientFactory" Version="$(GrpcVersion)" />
+    <PackageVersion Include="Grpc.Tools" Version="$(GrpcVersion)" PrivateAssets="All" />
     <!-- Miscellaneous -->
     <PackageVersion Include="MediatR" Version="12.2.0" />
     <PackageVersion Include="AutoMapper" Version="13.0.1" />

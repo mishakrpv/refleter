@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option csharp_namespace = "AccessControl.API.Grpc";
+
+package AccessControlApi;
+
+service AccessControl {
+  rpc VerifyAccessKey(VerificationRequest) returns (VerificationResponse) {}
+}
+
+message VerificationRequest {
+  string key = 1;
+  string secret_key = 2;
+}
+
+message VerificationResponse {
+  bool verified = 1;
+}

@@ -8,6 +8,6 @@ public sealed class AccessKeyTypeConfiguration : IEntityTypeConfiguration<Access
 {
     public void Configure(EntityTypeBuilder<AccessKey> builder)
     {
-        builder.HasKey(ak => ak.Key);
+        builder.HasKey(ak => new { ak.Key, ak.SecretKey });
     }
 }

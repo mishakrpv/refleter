@@ -22,4 +22,6 @@ var accessControlApi = builder.AddProject<Projects.AccessControl_API>("accesscon
 var identityApi = builder.AddProject<Projects.Identity_API>("identityapi")
     .WithReference(identityDb);
 
+var webApp = builder.AddProject<Projects.WebApp>("webapp");
+
 builder.Build().Run();

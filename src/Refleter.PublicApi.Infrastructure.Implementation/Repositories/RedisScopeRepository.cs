@@ -1,11 +1,11 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.Extensions.Logging;
-using PublicAPI.Infrastructure.Interfaces.Repositories;
-using PublicAPI.Model;
+using Refleter.PublicApi.Infrastructure.Interfaces.Repositories;
+using Refleter.PublicApi.Model;
 using StackExchange.Redis;
 
-namespace PublicAPI.Infrastructure.Implementation.Repositories;
+namespace Refleter.PublicApi.Infrastructure.Implementation.Repositories;
 
 public sealed class RedisScopeRepository(ILogger<RedisScopeRepository> logger, IConnectionMultiplexer redis) : IScopeRepository
 {

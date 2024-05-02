@@ -46,13 +46,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus", "src\EventBus\Ev
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.RabbitMQ", "src\EventBus.RabbitMQ\EventBus.RabbitMQ.csproj", "{2012206C-0258-4FF1-803F-422C4507ECEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PublicAPI.API", "src\PublicAPI.API\PublicAPI.API.csproj", "{81FA3BE6-CEE6-4931-8C76-B628CAA62A99}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Refleter.PublicApi.API", "src\Refleter.PublicApi.API\Refleter.PublicApi.API.csproj", "{81FA3BE6-CEE6-4931-8C76-B628CAA62A99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PublicAPI.Infrastructure.Interfaces", "src\PublicAPI.Infrastructure.Interfaces\PublicAPI.Infrastructure.Interfaces.csproj", "{CF42B14C-4BE2-4BE0-8DD3-0A1E633A81F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Refleter.PublicApi.Infrastructure.Interfaces", "src\Refleter.PublicApi.Infrastructure.Interfaces\Refleter.PublicApi.Infrastructure.Interfaces.csproj", "{CF42B14C-4BE2-4BE0-8DD3-0A1E633A81F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PublicAPI.Infrastructure.Implementation", "src\PublicAPI.Infrastructure.Implementation\PublicAPI.Infrastructure.Implementation.csproj", "{BD86EB16-A0CA-4979-9CCB-6E67885D7DFC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Refleter.PublicApi.Infrastructure.Implementation", "src\Refleter.PublicApi.Infrastructure.Implementation\Refleter.PublicApi.Infrastructure.Implementation.csproj", "{BD86EB16-A0CA-4979-9CCB-6E67885D7DFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PublicAPI.Model", "src\PublicAPI.Model\PublicAPI.Model.csproj", "{3A87E4E1-5493-4FFC-BA88-50B99E7C45C9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Refleter.PublicApi.Model", "src\Refleter.PublicApi.Model\Refleter.PublicApi.Model.csproj", "{3A87E4E1-5493-4FFC-BA88-50B99E7C45C9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessControl.Entities", "src\AccessControl.Entities\AccessControl.Entities.csproj", "{C3FB727A-C74A-4C20-83E0-97699A34F618}"
 EndProject

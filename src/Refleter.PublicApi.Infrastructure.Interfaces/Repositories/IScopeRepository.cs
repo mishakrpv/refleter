@@ -1,6 +1,6 @@
-﻿using PublicAPI.Model;
+﻿using Refleter.PublicApi.Model;
 
-namespace PublicAPI.Infrastructure.Interfaces.Repositories;
+namespace Refleter.PublicApi.Infrastructure.Interfaces.Repositories;
 
 public interface IScopeRepository
 {

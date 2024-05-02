@@ -1,4 +1,4 @@
-﻿namespace PublicAPI.Model;
+﻿namespace Refleter.PublicApi.Model;
 
 public sealed class Scope
 {

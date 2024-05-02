@@ -16,14 +16,14 @@ namespace AccessControl.Infrastructure.Migrations
                 columns: table => new
                 {
                     Key = table.Column<string>(type: "text", nullable: false),
-                    UserId = table.Column<string>(type: "text", nullable: false),
                     SecretKey = table.Column<string>(type: "text", nullable: false),
+                    UserId = table.Column<string>(type: "text", nullable: false),
                     Active = table.Column<bool>(type: "boolean", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AccessKeys", x => x.Key);
+                    table.PrimaryKey("PK_AccessKeys", x => new { x.Key, x.SecretKey });
                 });
         }
 
