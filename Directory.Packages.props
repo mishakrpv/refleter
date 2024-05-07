@@ -41,6 +41,8 @@
     <!-- Identity Server -->
     <PackageVersion Include="Duende.IdentityServer" Version="$(DuendeVersion)" />
     <PackageVersion Include="Duende.IdentityServer.AspNetIdentity" Version="$(DuendeVersion)" />
+    <PackageVersion Include="Duende.IdentityServer.EntityFramework" Version="$(DuendeVersion)" />
+    <PackageVersion Include="Duende.IdentityServer.Storage" Version="$(DuendeVersion)" />
     <!-- Entity Framework -->
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="$(EfVersion)" />
     <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.2" />
