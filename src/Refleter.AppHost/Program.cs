@@ -14,15 +14,15 @@ var identityWeb = builder.AddProject<Projects.Identity_Web>("identityweb")
     .WithReference(identityDb)
     .WithReference(eventBus);
 
+var identityApi = builder.AddProject<Projects.Identity_API>("identityapi")
+    .WithReference(identityDb);
+
 var storageApi = builder.AddProject<Projects.Storage_API>("storageapi")
     .WithReference(storageDb)
     .WithReference(eventBus);
 
 var accessControlApi = builder.AddProject<Projects.AccessControl_API>("accesscontrolapi")
     .WithReference(accessControlDb);
-
-var identityApi = builder.AddProject<Projects.Identity_API>("identityapi")
-    .WithReference(identityDb);
 
 var webApp = builder.AddProject<Projects.WebApp>("webapp");
 

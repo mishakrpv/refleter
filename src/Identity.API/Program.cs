@@ -3,7 +3,7 @@ using Identity.API.Extensions;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
-builder.AddIdentityServer();
+builder.AddServices();
 
 var app = builder.Build();
 
