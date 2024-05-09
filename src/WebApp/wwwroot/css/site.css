@@ -11,13 +11,14 @@ body {
   --color-line-generic: #ffffff26;
   --color-scroll-handle: #ffffff26;
   --color-scroll-track: #2d2c33;
-  --color-ct-backgroud: #424147;
+  --color-ct-background: #424147;
   --color-meta: #ffffff80;
   --color-background-btn-hover: #4d4c52;
   --color-icon-hover: #ffffffbf;
   --color-backgroud-item: #5282ff33;
   --color-backgroud-item-hover: #5282ff4d;
   --color-background-item-btn-hover: #ffffff1a;
+  --color-background-item-btn-active: rgba(255, 255, 255, 0.07);
   --color-sl-item: rgba(255, 255, 255, 0.85);
   --font-family-main: "Helvetica Neue", "Arial", "Helvetica", sans-serif;
 }
@@ -56,7 +57,7 @@ body {
 /*scrollbar-width: thin;*/
 
 .ct-select-list-container {
-  background-color: var(--color-ct-backgroud);
+  background-color: var(--color-ct-background);
   height: fit-content;
   padding: 0 4px 4px 4px;
 }
@@ -157,4 +158,84 @@ body {
   color: var(--color-sl-item);
   padding: 4px 0 4px 0;
   margin-left: 6px;
+  width: 163px;
+}
+
+.actions-btn {
+  background-color: transparent;
+  width: 28px;
+  height: 28px;
+  transition: .15s;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.actions-btn:hover {
+  background-color: var(--color-background-item-btn-hover);
+  cursor: pointer;
+}
+
+.actions-btn:hover svg {
+  color: var(--color-icon-hover);
+}
+
+.actions-icon {
+  scale: 1.35;
+  color: var(--color-meta);
+  transition: .15s;
+  height: 12px;
+  width: 12px;
+  justify-content: center;
+}
+
+.actions-popup {
+  display: none;
+  width: 90px;
+  height: fit-content;
+  position: absolute;
+  transition: .15s;
+  left: 240px;
+  top: 90px;
+  border-radius: 4px;
+  background-color: var(--color-ct-background);
+  border: 1px solid var(--color-line-generic);
+}
+
+.actions-popup.toggled {
+  animation: .1s show-info ease;
+  display: flex;
+}
+
+.action-item {
+  height: 20px;
+  width: 100%;
+  border-radius: inherit;
+  font-family: var(--font-family-main);
+  font-size: 12px;
+  color: var(--color-sl-item);
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+}
+
+.action-item:hover {
+  background-color: var(--color-background-item-btn-hover);
+  cursor: pointer;
+}
+
+.action-item:active {
+  background-color: var(--color-background-item-btn-active);
+}
+
+.create-scope-dialog {
+  width: 600px;
+  height: 165px;
+  background-color: red;
+  outline: none;
+  border: none;
+  border-radius: 4px;
 }
