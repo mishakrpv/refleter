@@ -26,11 +26,15 @@ body {
   --color-background-base-btn-hover: rgba(255, 255, 255, 0.1);
   --color-background-base-dialog: rgb(45, 44, 51);
   --color-alert-base: rgb(232, 73, 69);
+  --color-sl-item-hover: #57565c;
+  --color-disabled-background: #ffffff12;
+  --color-disabled-text: rgba(255, 255, 255, 0.3);
   --font-family-main: "Helvetica Neue", "Arial", "Helvetica", sans-serif;
 }
 
 .body {
   background-color: var(--color-background-base);
+  overflow: hidden;
 }
 
 .main-cloud-tree {
@@ -70,10 +74,19 @@ body {
 /*scrollbar-color: var(--color-scroll-handle) var(--color-scroll-track);*/
 /*scrollbar-width: thin;*/
 
+.ct-select-list-scroll-area {
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-color: var(--color-scroll-handle) var(--color-scroll-track);
+  scrollbar-width: auto;
+}
+
 .ct-select-list-container {
   background-color: var(--color-ct-background);
   height: fit-content;
   padding: 0 4px 4px 4px;
+  overflow-y: auto;
+  flex-shrink: 0;
 }
 
 .ct-select-list-header {
@@ -132,6 +145,14 @@ body {
   background-color: var(--color-background-exp-item-hover);
 }
 
+.sl-expandable-item.toggled {
+  background-color: transparent;
+}
+
+.sl-expandable-item.toggled:hover {
+  background-color: var(--color-background-exp-item-hover);
+}
+
 .select-btn {
   background-color: transparent;
   padding: 6px;
@@ -186,6 +207,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: 6px;
 }
 
 .actions-btn:hover {
@@ -257,7 +279,7 @@ body {
 
 .create-scope-dialog {
   width: 480px;
-  height: 324px;
+  height: fit-content;
   background-color: var(--color-background-base-dialog);
   border: none;
   outline: none;
@@ -323,11 +345,10 @@ body {
 .input-container {
   display: flex;
   flex-direction: row;
-  align-items: center;
 }
 
 .form-control-label {
-  padding-top: 6px;
+  padding-top: 4px;
   width: 195px;
 }
 
@@ -336,6 +357,24 @@ body {
   display: flex;
   align-items: center;
   color: var(--color-text-base);
+}
+
+.cs-name-input.invalid {
+  border-color: var(--color-alert-base);
+}
+
+.input-error-msg {
+  display: none;
+  color: var(--color-alert-base);
+  margin-top: 4px;
+}
+
+.cs-name-input-container {
+  display: inline-block;
+  vertical-align: top;
+  flex-direction: column;
+  height: fit-content;
+  width: 218px;
 }
 
 .form-control {
@@ -352,7 +391,94 @@ body {
   font-family: var(--font-family-main);
 }
 
-.cs.cs-btns-container {
+.cs-btn {
+  height: 36px;
+  width: 128px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  transition: .2s;
+  border-radius: 6px;
+  margin-right: 8px;
+}
+
+.creation-confirm-btn {
+  background-color: #4b71d6;
+}
+
+.creation-confirm-btn:hover {
+  background-color: #638fff !important;
+}
+
+.cs-btn.locked {
+  background-color: var(--color-disabled-background);
+  color: var(--color-disabled-text);
+  cursor: default;
+  pointer-events: none;
+}
+
+.cs-btn:hover {
+  background-color: var(--color-background-base-btn-hover);
+  cursor: pointer;
+}
+
+.cs-dialog-footer {
+  padding-top: 20px;
+  padding-left: 180px;
+  padding-bottom: 28px;
+}
+
+.cs-btns-container {
   display: flex;
   flex-direction: row;
+}
+
+.sl-item {
+  border-radius: 4px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  font-family: var(--font-family-main);
+  text-decoration: none;
+  flex-direction: row;
+}
+
+.sl-item:hover {
+  background-color: var(--color-sl-item-hover);
+  cursor: pointer;
+}
+
+.sl-item-title {
+  margin-left: 20%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.scope-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  border-radius: 4px;
+  font-size: 8px;
+  color: #ffffff;
+  justify-content: center;
+  align-items: center;
+  padding-top: 3px;
+}
+
+.sl-item-signature {
+  color: var(--color-sl-item);
+  font-size: 13px;
+  margin-left: 6px;
+}
+
+.sl-item-list {
+  display: none;
+  height: fit-content;
+}
+
+.sl-item-link {
+  text-decoration: none;
 }
