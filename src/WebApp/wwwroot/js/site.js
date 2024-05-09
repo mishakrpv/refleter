@@ -1,6 +1,7 @@
 ﻿const selectBtn = document.querySelector('#selectBtn')
 const actionsBtn = document.querySelector('#actionsBtn')
 const actionsPopup = document.querySelector('#actionsPopup')
+const overlay = document.querySelector('.overlay')
 
 const toggled = 'toggled'
 
@@ -33,5 +34,16 @@ const createScopeBtn = document.querySelector('#createScopeBtn')
 const createScopeDialog = document.querySelector('#createScopeDialog')
 
 createScopeBtn.onclick = () => {
+    overlay.style.display = 'flex'
     createScopeDialog.showModal()
+}
+
+const createScopeCloseBtn = document.querySelector('#createScopeCloseBtn')
+
+createScopeDialog.onclose = () => {
+    overlay.style.display = 'none'
+}
+
+createScopeCloseBtn.onclick = () => {
+    createScopeDialog.close()
 }
