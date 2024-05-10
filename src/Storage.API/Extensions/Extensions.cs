@@ -4,6 +4,7 @@ using EventBus.RabbitMQ;
 using Hellang.Middleware.ProblemDetails;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Refleter.ServiceDefaults;
 using Storage.API.IntegrationEvents.EventHandling;
 using Storage.API.IntegrationEvents.Events;
 using Storage.Application.Commands.CreateScope;
@@ -18,6 +19,8 @@ public static class Extensions
 {
     public static void AddServices(this WebApplicationBuilder builder)
     {
+        builder.AddDefaultAuthentication();
+        
         builder.AddNpgsqlDbContext<StorageContext>(Constants.POSTGRES_CONNECTION_NAME);
         
         builder.Services.AddAutoMapper(typeof(MappingProfile));

@@ -13,6 +13,6 @@ public static class Extensions
         builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
             .AddEntityFrameworkStores<IdentityContext>();
         
-        builder.AddIdentityServer();
+        builder.AddIdentityServer(builder.Configuration);
     }
 }
