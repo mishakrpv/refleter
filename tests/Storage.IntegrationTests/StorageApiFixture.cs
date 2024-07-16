@@ -10,6 +10,9 @@ public sealed class StorageApiFixture : WebApplicationFactory<Program>, IAsyncLi
     private readonly IHost _app;
     
     public IResourceBuilder<PostgresServerResource> Postgres { get; private set; }
+    public IResourceBuilder<PostgresDatabaseResource> StorageDb { get; private set; }
+    public IResourceBuilder<PostgresDatabaseResource> IdentityDb { get; private set; }
+    public IResourceBuilder<ProjectResource> IdentityApi { get; private set; }
     private string _postgresConnectionString;
 
     public StorageApiFixture()
@@ -22,7 +25,10 @@ public sealed class StorageApiFixture : WebApplicationFactory<Program>, IAsyncLi
 
         var appBuilder = DistributedApplication.CreateBuilder(options);
 
-        Postgres = appBuilder.AddPostgres("storagedb");
+        Postgres = appBuilder.AddPostgres("postgres");
+        StorageDb = Postgres.AddDatabase("storagedb");
+        IdentityDb = Postgres.AddDatabase("identitydb");
+        IdentityApi = appBuilder.AddProject<Projects.Identity_API>("identityapi").WithReference(IdentityDb);
         _app = appBuilder.Build();
     }
     
@@ -32,7 +38,8 @@ public sealed class StorageApiFixture : WebApplicationFactory<Program>, IAsyncLi
         {
             config.AddInMemoryCollection(new Dictionary<string, string>
             {
-                { $"ConnectionStrings:{Postgres.Resource.Name}", _postgresConnectionString },
+                { $"ConnectionStrings:{StorageDb.Resource.Name}", _postgresConnectionString },
+                { "Identity:Url", IdentityApi.GetEndpoint("http").Url }
             }!);
         });
         return base.CreateHost(builder);
@@ -41,7 +48,7 @@ public sealed class StorageApiFixture : WebApplicationFactory<Program>, IAsyncLi
     public async Task InitializeAsync()
     {
         await _app.StartAsync();
-        _postgresConnectionString = await Postgres.Resource.GetConnectionStringAsync();
+        _postgresConnectionString = await StorageDb.Resource.ConnectionStringExpression.GetValueAsync(default);
     }
 
     public new async Task DisposeAsync()
