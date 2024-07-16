@@ -28,7 +28,6 @@ public sealed class StorageApiTests : IClassFixture<StorageApiFixture>
     public async Task CreateScope()
     {
         // Arrange
-
         const string userId = "123";
         const string scopeName = "Scope";
         

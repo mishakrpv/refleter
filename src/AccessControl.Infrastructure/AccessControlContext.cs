@@ -4,14 +4,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AccessControl.Infrastructure;
 
-public sealed class AccessControlContext : DbContext
+public class AccessControlContext : DbContext
 {
     public AccessControlContext(DbContextOptions<AccessControlContext> options) : base(options)
     {
         Database.EnsureCreated();
     }
     
-    public DbSet<AccessKey> AccessKeys { get; set; }
+    protected AccessControlContext() { }
+    
+    public virtual DbSet<AccessKey> AccessKeys { get; set; }
     
     protected override void OnModelCreating(ModelBuilder builder)
     {
