@@ -59,6 +59,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessControl.Entities", "s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessControl.Infrastructure", "src\AccessControl.Infrastructure\AccessControl.Infrastructure.csproj", "{240A8FB9-0047-4319-82D4-73440C0E0434}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.IntegrationTests", "tests\Storage.IntegrationTests\Storage.IntegrationTests.csproj", "{78B42BE5-38DC-4BD4-BFE9-D543640D5289}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -141,6 +143,10 @@ Global
 		{240A8FB9-0047-4319-82D4-73440C0E0434}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{240A8FB9-0047-4319-82D4-73440C0E0434}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{240A8FB9-0047-4319-82D4-73440C0E0434}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78B42BE5-38DC-4BD4-BFE9-D543640D5289}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78B42BE5-38DC-4BD4-BFE9-D543640D5289}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78B42BE5-38DC-4BD4-BFE9-D543640D5289}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78B42BE5-38DC-4BD4-BFE9-D543640D5289}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A41465D6-2BC1-4898-82CC-699BE8BBDC57} = {108DC536-DC7D-4751-902E-E1B3268A13BE}
@@ -167,5 +173,6 @@ Global
 		{3A87E4E1-5493-4FFC-BA88-50B99E7C45C9} = {46C8B537-335B-451F-97C6-A83B4D3D3287}
 		{C3FB727A-C74A-4C20-83E0-97699A34F618} = {6B735D36-19DF-4DF7-9536-2C5CD7DCCB7A}
 		{240A8FB9-0047-4319-82D4-73440C0E0434} = {6B735D36-19DF-4DF7-9536-2C5CD7DCCB7A}
+		{78B42BE5-38DC-4BD4-BFE9-D543640D5289} = {B62AF0D4-8E0E-42EB-AAB3-3B49F09D2C6B}
 	EndGlobalSection
 EndGlobal
