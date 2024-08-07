@@ -1,1 +1,10 @@
-﻿
+﻿@model WebApp.ViewModels.ScopeViewModel
+
+@{
+    ViewData["Title"] = $"{Model.ScopeName} - Scope dashboard | Refleter Cloud";
+}
+
+<div class="main-dashboard">
+    @await Html.PartialAsync("_ConsoleTreeBar", Model.ConsoleTreeBarViewModel);
+    @* <partial name="_ConsoleTreeBar"/> *@
+</div>

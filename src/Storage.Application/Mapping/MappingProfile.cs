@@ -7,7 +7,7 @@ namespace Storage.Application.Mapping;
 
 public sealed class MappingProfile : Profile
 {
-    private static Dictionary<Color, string> _colorMap = new()
+    private static readonly Dictionary<Color, string> ColorMap = new()
     {
         { Color.White, "#FFFFFF" },
         { Color.Crimson, "#DC143C" },
@@ -15,7 +15,7 @@ public sealed class MappingProfile : Profile
         { Color.DarkKhaki, "#BDB76B" },
         { Color.Orchid, "#DA70D6" },
         { Color.Indigo, "#4B0082" },
-        { Color.Lime, "#00FF00" },
+        { Color.Lime, "#A3E600" },
         { Color.MediumSeaGreen, "#3CB371" },
         { Color.Teal, "#008080" },
         { Color.SkyBlue, "#87CEEB" },
@@ -32,6 +32,6 @@ public sealed class MappingProfile : Profile
 
     private static string MapColor(Color color)
     {
-        return _colorMap[color];
+        return ColorMap[color];
     }
 }

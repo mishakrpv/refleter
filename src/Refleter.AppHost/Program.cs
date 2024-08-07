@@ -41,9 +41,7 @@ var accessControlApi = builder.AddProject<Projects.AccessControl_API>("accesscon
 var webApp = builder.AddProject<Projects.WebApp>("webapp", launchProfileName)
     .WithExternalHttpEndpoints()
     .WithReference(storageApi)
-    // .WithEnvironment("IdentityWebUrl", identityWebEndpoint)
     .WithEnvironment("IdentityUrl", identityEndpoint);
-    // .WithEnvironment("Identity__Url", identityEndpoint);;
 
 var publicApi = builder.AddProject<Projects.Refleter_PublicApi_API>("publicapi")
     .WithReference(redis)

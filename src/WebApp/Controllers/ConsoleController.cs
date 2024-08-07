@@ -19,10 +19,14 @@ public class ConsoleController(StorageService storageService,
     public async Task<IActionResult> Index()
     {
         var userId = User.Claims.First(c => c.Type == "sub").Value;
+        var userName = User.Claims.First(c => c.Type == "name").Value;
+        var cloudName = userName[..userName.IndexOf('@')];
         var model = new IndexViewModel
         {
+            CloudName = cloudName,
             ConsoleTreeBarViewModel =
             {
+                CloudName = cloudName,
                 IdentityWebUrl = _configuration.GetRequiredValue("IdentityUrl"),
                 Scopes = await _storageService.GetScopesByUserIdAsync(userId)
             }

@@ -1,7 +1,7 @@
 ﻿namespace WebApp.ViewModels;
 
-public sealed class IndexViewModel
+public class ScopeViewModel
 {
-    public string CloudName { get; set; } = null!;
+    public string ScopeName { get; set; } = null!;
     public ConsoleTreeBarViewModel ConsoleTreeBarViewModel { get; set; } = new();
 }
