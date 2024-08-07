@@ -16,17 +16,18 @@ var eventBus = builder.AddRabbitMQ("eventbus");
 
 var launchProfileName = ShouldUseHttpForEndpoints() ? "http" : "https";
 
-var identityWeb = builder.AddProject<Projects.Identity_Web>("identityweb", launchProfileName)
+// var identityWeb = builder.AddProject<Projects.Identity_Web>("identityweb", launchProfileName)
+//     .WithExternalHttpEndpoints()
+//     .WithReference(identityDb)
+//     .WithReference(eventBus);
+
+var identityApi = builder.AddProject<Projects.Identity_API>("identityapi", launchProfileName)
     .WithExternalHttpEndpoints()
     .WithReference(identityDb)
     .WithReference(eventBus);
 
-var identityApi = builder.AddProject<Projects.Identity_API>("identityapi", launchProfileName)
-    .WithExternalHttpEndpoints()
-    .WithReference(identityDb);
-
 var identityEndpoint = identityApi.GetEndpoint(launchProfileName);
-var identityWebEndpoint = identityWeb.GetEndpoint(launchProfileName);
+// var identityWebEndpoint = identityWeb.GetEndpoint(launchProfileName);
 
 var storageApi = builder.AddProject<Projects.Storage_API>("storageapi")
     .WithReference(storageDb)
@@ -40,9 +41,9 @@ var accessControlApi = builder.AddProject<Projects.AccessControl_API>("accesscon
 var webApp = builder.AddProject<Projects.WebApp>("webapp", launchProfileName)
     .WithExternalHttpEndpoints()
     .WithReference(storageApi)
-    .WithEnvironment("IdentityWebUrl", identityWebEndpoint)
-    .WithEnvironment("IdentityUrl", identityEndpoint)
-    .WithEnvironment("Identity__Url", identityEndpoint);;
+    // .WithEnvironment("IdentityWebUrl", identityWebEndpoint)
+    .WithEnvironment("IdentityUrl", identityEndpoint);
+    // .WithEnvironment("Identity__Url", identityEndpoint);;
 
 var publicApi = builder.AddProject<Projects.Refleter_PublicApi_API>("publicapi")
     .WithReference(redis)

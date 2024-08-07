@@ -1,7 +1,9 @@
 ﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Refleter.ServiceDefaults;
+using WebApp.Extensions;
 using WebApp.Services.Impl;
 using WebApp.ViewModels;
 
@@ -16,12 +18,12 @@ public class ConsoleController(StorageService storageService,
     
     public async Task<IActionResult> Index()
     {
-        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
+        var userId = User.Claims.First(c => c.Type == "sub").Value;
         var model = new IndexViewModel
         {
             ConsoleTreeBarViewModel =
             {
-                IdentityWebUrl = _configuration.GetRequiredValue("IdentityWebUrl"),
+                IdentityWebUrl = _configuration.GetRequiredValue("IdentityUrl"),
                 Scopes = await _storageService.GetScopesByUserIdAsync(userId)
             }
         };
