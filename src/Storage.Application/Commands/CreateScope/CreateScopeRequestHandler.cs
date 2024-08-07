@@ -13,8 +13,8 @@ public sealed class CreateScopeRequestHandler(StorageContext context, IMapper ma
     
     public async Task<ScopeDTO> Handle(CreateScopeRequest request, CancellationToken cancellationToken)
     {
-        var scopeEntry = await _context.AddAsync(new Scope(request.UserId, request.Name));
-        await _context.SaveChangesAsync();
+        var scopeEntry = await _context.AddAsync(new Scope(request.UserId, request.Name), cancellationToken);
+        await _context.SaveChangesAsync(cancellationToken);
 
         return _mapper.Map<ScopeDTO>(scopeEntry.Entity);
     }

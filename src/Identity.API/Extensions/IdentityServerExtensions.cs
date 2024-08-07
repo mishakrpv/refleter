@@ -79,8 +79,8 @@ public static class IdentityServerExtensions
                 ClientName = "Storage Swagger UI",
                 AllowedGrantTypes = GrantTypes.Implicit,
                 AllowAccessTokensViaBrowser = true,
-                RedirectUris = { $"{configuration["BasketApiClient"]}/swagger/oauth2-redirect.html" },
-                PostLogoutRedirectUris = { $"{configuration["BasketApiClient"]}/swagger/" },
+                RedirectUris = { $"{configuration["StorageApiClient"]}/swagger/oauth2-redirect.html" },
+                PostLogoutRedirectUris = { $"{configuration["StorageApiClient"]}/swagger/" },
                 
                 AllowedScopes =
                 {

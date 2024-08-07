@@ -1,4 +1,5 @@
-﻿@model WebApp.ViewModels.ConsoleTreeBarViewModel
+﻿@using WebApp.Services.Impl
+@model WebApp.ViewModels.ConsoleTreeBarViewModel
 
 <div class="main-cloud-tree">
     <div class="ct-select-content-search">
@@ -31,18 +32,21 @@
                     </button>
                 </div>
                 <div id="scopes" class="sl-item-list">
-                    <a href="#" class="sl-item-link">
-                        <div title="boatman" class="sl-item">
-                            <div class="sl-item-title">
-                                <div class="scope-icon" style="color: rgb(255, 255, 255); background-color: rgb(39, 146, 57);">
-                                    <span>BO</span>
-                                </div>
-                                <div class="sl-item-signature">
-                                    boatman
+                    @foreach (var scope in Model.Scopes)
+                    {
+                        <a href="#" class="sl-item-link">
+                            <div title="@scope.Name" class="sl-item">
+                                <div class="sl-item-title">
+                                    <div class="scope-icon" style="color: rgb(255, 255, 255); background-color: @scope.IconColorHexCode;">
+                                        <span>@scope.Name[..2].ToUpper()</span>
+                                    </div>
+                                    <div class="sl-item-signature">
+                                        @scope.Name.ToLower()
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    }
                 </div>
                 <div id="actionsPopup" class="actions-popup">
                     <div id="createScopeBtn" class="action-item">

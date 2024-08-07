@@ -1,10 +1,9 @@
-using Refleter.ServiceDefaults;
+using WebApp.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllersWithViews();
-builder.AddDefaultAuthentication();
-builder.Services.AddHealthChecks();
+builder.AddServiceDefaults();
+builder.AddServices();
 
 var app = builder.Build();
 
@@ -15,10 +14,13 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseAntiforgery();
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",

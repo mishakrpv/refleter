@@ -39,13 +39,22 @@ var accessControlApi = builder.AddProject<Projects.AccessControl_API>("accesscon
 
 var webApp = builder.AddProject<Projects.WebApp>("webapp", launchProfileName)
     .WithExternalHttpEndpoints()
-    .WithEnvironment("Identity__Web_Url", identityWebEndpoint)
-    .WithEnvironment("Identity__Url", identityEndpoint);
+    .WithReference(storageApi)
+    .WithEnvironment("IdentityWebUrl", identityWebEndpoint)
+    .WithEnvironment("IdentityUrl", identityEndpoint)
+    .WithEnvironment("Identity__Url", identityEndpoint);;
 
 var publicApi = builder.AddProject<Projects.Refleter_PublicApi_API>("publicapi")
     .WithReference(redis)
     .WithReference(storageApi)
     .WithReference(accessControlApi);
+
+// Wire up the callback urls (self referencing)
+webApp.WithEnvironment("CallBackUrl", webApp.GetEndpoint(launchProfileName));
+
+// Identity has a reference to all the apps for callback urls, this is a cyclic reference
+identityApi.WithEnvironment("StorageApiClient", storageApi.GetEndpoint("http"))
+    .WithEnvironment("WebAppClient", webApp.GetEndpoint(launchProfileName));
 
 builder.Build().Run();
 

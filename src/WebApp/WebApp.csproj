@@ -5,6 +5,12 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Asp.Versioning.Http.Client" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" />
+    <PackageReference Include="Microsoft.Extensions.ServiceDiscovery.Yarp" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Refleter.ServiceDefaults\Refleter.ServiceDefaults.csproj" />
