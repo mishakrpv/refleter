@@ -26,6 +26,7 @@ var identityApi = builder.AddProject<Projects.Identity_API>("identityapi", launc
     .WithReference(identityDb);
 
 var identityEndpoint = identityApi.GetEndpoint(launchProfileName);
+var identityWebEndpoint = identityWeb.GetEndpoint(launchProfileName);
 
 var storageApi = builder.AddProject<Projects.Storage_API>("storageapi")
     .WithReference(storageDb)
@@ -38,6 +39,7 @@ var accessControlApi = builder.AddProject<Projects.AccessControl_API>("accesscon
 
 var webApp = builder.AddProject<Projects.WebApp>("webapp", launchProfileName)
     .WithExternalHttpEndpoints()
+    .WithEnvironment("Identity__Web_Url", identityWebEndpoint)
     .WithEnvironment("Identity__Url", identityEndpoint);
 
 var publicApi = builder.AddProject<Projects.Refleter_PublicApi_API>("publicapi")

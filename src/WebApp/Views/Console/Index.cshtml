@@ -1,7 +1,10 @@
-﻿@{
+﻿@model WebApp.ViewModels.IndexViewModel
+
+@{
     ViewData["Title"] = "";
 }
 
 <div class="main-dashboard">
-    <partial name="_ConsoleTreeBar"/>
+    @await Html.PartialAsync("_ConsoleTreeBar", Model.ConsoleTreeBarViewModel);
+    @* <partial name="_ConsoleTreeBar"/> *@
 </div>
