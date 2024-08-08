@@ -56,6 +56,7 @@ identityApi.WithEnvironment("StorageApiClient", storageApi.GetEndpoint("http"))
     .WithEnvironment("WebAppClient", webApp.GetEndpoint(launchProfileName));
 
 builder.Build().Run();
+return;
 
 static bool ShouldUseHttpForEndpoints()
 {

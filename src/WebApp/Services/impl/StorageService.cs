@@ -1,6 +1,4 @@
-﻿using WebApp.Services.Interfaces;
-
-namespace WebApp.Services.Impl;
+﻿namespace WebApp.Services.Impl;
 
 public sealed class StorageService(HttpClient client)
 {
@@ -11,8 +9,13 @@ public sealed class StorageService(HttpClient client)
     public async Task<ScopeRecord[]> GetScopesByUserIdAsync(string userId)
     {
         var requestUri = $"{RemoteServiceBaseUrl}/scope/by/{userId}";
-        var scopes =  await _client.GetFromJsonAsync<ScopeRecord[]>(requestUri);
-        return scopes!;
+        return (await _client.GetFromJsonAsync<ScopeRecord[]>(requestUri))!;
+    }
+
+    public async Task<ScopeRecord> GetScopeAsync(string id)
+    {
+        var requestUri = $"{RemoteServiceBaseUrl}/scope/{id}";
+        return (await _client.GetFromJsonAsync<ScopeRecord>(requestUri))!;
     }
 }
 

@@ -1,9 +1,19 @@
-﻿const selectBtn = document.querySelector('#selectBtn')
+const selectBtn = document.querySelector('#selectBtn')
 const scopes = document.querySelector('#scopes')
 const actionsBtn = document.querySelector('#actionsBtn')
 const actionsPopup = document.querySelector('#actionsPopup')
 const overlay = document.querySelector('.overlay')
 const scopesExp = document.querySelector('#scopesExp')
+
+// const elements = document.getElementsByClassName('sl-item');
+// for (let i = 0; i < elements.length; i++){
+//     elements[i].onclick = function() {
+//         for (let j = 0; j < elements.length; j++){
+//             elements[j].classList.remove(toggled)
+//         }
+//         elements[i].classList.add(toggled)
+//     };
+// }
 
 const toggled = 'toggled'
 

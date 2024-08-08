@@ -15,15 +15,13 @@ public static class Extensions
         builder.AddAuthenticationServices();
         
         builder.Services.AddHttpForwarderWithServiceDiscovery();
-            
-        builder.Services.AddControllersWithViews();
-
+        
         builder.Services.AddHttpClient<StorageService>(hc => hc.BaseAddress = new Uri("http://storageapi"))
             .AddApiVersion(1.0)
             .AddAuthToken();
     }
-    
-    public static void AddAuthenticationServices(this IHostApplicationBuilder builder)
+
+    private static void AddAuthenticationServices(this IHostApplicationBuilder builder)
     {
         var configuration = builder.Configuration;
         var services = builder.Services;

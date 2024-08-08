@@ -1,0 +1,9 @@
+@page "/cloud/{cloudId}"
+@attribute [Authorize]
+
+<PageTitle>cloud-@CloudName — Overview | Refleter Cloud </PageTitle>
+
+@code {
+
+    [Parameter] public string CloudName { get; set; } = null!;
+}
