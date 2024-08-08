@@ -1,9 +1,16 @@
-@page "/cloud/{cloudId}"
-@attribute [Authorize]
+@using System.Security.Claims
+@page "/cloud"
 
-<PageTitle>cloud-@CloudName — Overview | Refleter Cloud </PageTitle>
+<PageTitle>cloud-@_cloudName</PageTitle>
 
 @code {
-
-    [Parameter] public string CloudName { get; set; } = null!;
+    private string? _cloudName;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        _cloudName = HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+    }
+    
+    [CascadingParameter]
+    public HttpContext? HttpContext { get; set; }
 }
