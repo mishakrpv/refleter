@@ -13,11 +13,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Refleter.ServiceDefaults\Refleter.ServiceDefaults.csproj" />
+        <ProjectReference Include="..\Refleter.ServiceDefaults\Refleter.ServiceDefaults.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Components\Shared\" />
+        <Folder Include="wwwroot\icons\" />
     </ItemGroup>
 
 </Project>

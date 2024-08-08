@@ -1,13 +1,18 @@
 ﻿@using Identity.API.Models
 @using Microsoft.AspNetCore.Identity
 @using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Refleter.ServiceDefaults
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
+@inject IConfiguration Configuration
 
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
     {
-        <li class="nav-item">
+        <li class="nav-item nav-link-console">
+            <a class="nav-link text-dark nav-link-fixed" href="@Configuration.GetRequiredValue("WebAppClient")">Console</a>
+        </li>
+        <li class="nav-item nav-item-height-adjusted">
             <a class="nav-link text-dark nav-link-fixed" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Account</a>
         </li>
         <li class="nav-item">

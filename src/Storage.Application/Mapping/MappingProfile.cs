@@ -9,7 +9,6 @@ public sealed class MappingProfile : Profile
 {
     private static readonly Dictionary<Color, string> ColorMap = new()
     {
-        { Color.White, "#FFFFFF" },
         { Color.Crimson, "#DC143C" },
         { Color.Orange, "#FFA500" },
         { Color.DarkKhaki, "#BDB76B" },

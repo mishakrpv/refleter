@@ -141,7 +141,7 @@ body {
 }
 
 .provider-btn:hover {
-  background: transparent;
+  background-color: rgba(55, 53, 47, 0.08);
   color: #37352F;
   border-color: rgba(55, 53, 47, 0.16);
 }
@@ -227,4 +227,15 @@ body {
 .delete-pd-strong {
   font-size: 14px;
   max-width: 320px;
+}
+
+.nav-item-height-adjusted {
+  padding-top: 1px;
+}
+
+.nav-link-console {
+  border: 1px solid rgba(55, 53, 47, 0.16);
+  border-radius: 6px;
+  padding-bottom: 4px;
+  margin-right: 4px;
 }
