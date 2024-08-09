@@ -1,15 +1,13 @@
 ﻿@using Refleter.ServiceDefaults
 @inject IConfiguration Configuration
-@attribute [StreamRendering]
 
 <div class="top-row ps-3 navbar navbar-dark navbar-bottom-lined">
-    <div class="navbar-brand navbar-with-icon">
-        <div class="brand-icon">
-            <img src="/favicon.ico" alt="Refleter" width="30" height="30"/>
-        </div>
-        <div class="brand-title">
-            Refleter
-        </div>
+    <div class="navbar-brand navbar-brand__icon">
+        <a href="">
+            <div class="brand-icon">
+                <img src="images/refleter.png" alt="Refleter" width="30" height="30"/>
+            </div>
+        </a>
     </div>
 </div>
 
@@ -18,24 +16,20 @@
 <div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
     <nav class="flex-column">
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <img src="icons/cloud.svg" class="cloud-icon" alt="Cloud" height="24" width="24"/>
-                Cloud
+            <NavLink class="nav-link nav-link__icon" href="" Match="NavLinkMatch.All">
+                <img src="icons/cloud.svg" class="cloud-icon" alt="Cloud" height="20" width="20"/>
             </NavLink>
         </div>
 
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="settings">
-                @* <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> *@
+            <NavLink class="nav-link nav-link__icon" href="settings">
                 <img src="icons/settings.svg" class="settings-icon" alt="Settings" height="20" width="20"/>
-                Settings
             </NavLink>
         </div>
 
         <div class="nav-item px-3">
-            <a class="nav-link" href="@_accountUrl">
+            <a class="nav-link nav-link__icon" href="@_accountUrl">
                 <img src="icons/account.svg" class="account-icon" alt="Account" height="20" width="20"/>
-                Account
             </a>
         </div>
     </nav>

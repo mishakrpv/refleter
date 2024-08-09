@@ -1,5 +1,4 @@
 @page "/cloud/{cloudId}"
-@attribute [StreamRendering]
 
 <PageTitle>cloud-@_cloudName — Overview | Refleter Cloud</PageTitle>
 
@@ -9,7 +8,7 @@
     
     private string? _cloudName;
     
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
         _cloudName = HttpContext?.User.Claims.First(c => c.Type == "name").Value;
     }

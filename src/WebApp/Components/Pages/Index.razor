@@ -6,10 +6,9 @@
     [CascadingParameter]
     public HttpContext? HttpContext { get; set; }
 
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
         var cloudId = HttpContext?.User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
         Nav.NavigateTo("cloud/" + cloudId);
-        await base.OnInitializedAsync();
     }
 }
