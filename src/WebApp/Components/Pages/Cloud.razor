@@ -1,9 +1,12 @@
 @using System.Security.Claims
-@page "/cloud"
+@page "/cloud/{cloudId}"
 
 <PageTitle>cloud-@_cloudName</PageTitle>
 
 @code {
+    [Parameter]
+    public string CloudId { get; set; } = null!;
+    
     private string? _cloudName;
     
     protected override async Task OnInitializedAsync()

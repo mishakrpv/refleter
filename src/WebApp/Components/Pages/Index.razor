@@ -1,0 +1,15 @@
+@page "/"
+@using Microsoft.AspNetCore.Authorization
+@inject NavigationManager Nav
+@attribute [Authorize]
+@code {
+    [CascadingParameter]
+    public HttpContext? HttpContext { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var cloudId = HttpContext?.User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
+        Nav.NavigateTo("cloud/" + cloudId);
+        await base.OnInitializedAsync();
+    }
+}
