@@ -3,7 +3,7 @@
     --color-line-generic: #ffffff26;
 }
 
-main {
+body {
     background-color: var(--color-background-base);
 }
 
@@ -32,4 +32,17 @@ main {
 
 .navbar-bottom-lined {
     border-bottom: 1px solid var(--color-line-generic);
+}
+
+.cloud-icon {
+    margin-left: -2px;
+    margin-right: 10px;
+}
+
+.settings-icon {
+    margin-right: 12px;
+}
+
+.account-icon {
+    margin-right: 12px;
 }

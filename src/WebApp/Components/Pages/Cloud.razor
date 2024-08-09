@@ -1,7 +1,7 @@
-@using System.Security.Claims
 @page "/cloud/{cloudId}"
+@attribute [StreamRendering]
 
-<PageTitle>cloud-@_cloudName</PageTitle>
+<PageTitle>cloud-@_cloudName — Overview | Refleter Cloud</PageTitle>
 
 @code {
     [Parameter]
@@ -11,7 +11,7 @@
     
     protected override async Task OnInitializedAsync()
     {
-        _cloudName = HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        _cloudName = HttpContext?.User.Claims.First(c => c.Type == "name").Value;
     }
     
     [CascadingParameter]
