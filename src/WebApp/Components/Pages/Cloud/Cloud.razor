@@ -1,17 +1,20 @@
 @page "/cloud/{cloudId}"
+@using WebApp.Components.Layout
 
 <PageTitle>cloud-@_cloudName — Overview | Refleter Cloud</PageTitle>
 
+<CloudMenu CloudId="@CloudId"/>
+
 @code {
-    [Parameter]
-    public string CloudId { get; set; } = null!;
-    
     private string? _cloudName;
     
     protected override void OnInitialized()
     {
         _cloudName = HttpContext?.User.Claims.First(c => c.Type == "name").Value;
     }
+    
+    [Parameter]
+    public string CloudId { get; set; }
     
     [CascadingParameter]
     public HttpContext? HttpContext { get; set; }

@@ -1,0 +1,56 @@
+﻿@using WebApp.Services.Impl
+@rendermode InteractiveServer
+@inject CloudMenuService Menu
+@inject NavigationManager Nav
+
+<div class="cloud-menu">
+    <div class="scopes-search__container">
+        <input class="scopes-search__input" placeholder="Search"/>
+    </div>
+    <div class="scopes-list__container">
+        <div class="scopes-list__static-container">
+            <div class="menu-link link-to-dashboard @(Menu.State.MenuHaveActiveItem ? "" : "menu-link-active")">
+                <div class="expand-button" @onclick="ToggleMenu">
+
+                </div>
+            </div>
+        </div>
+        <div class="scopes-list__scrollable-container @(Menu.State.MenuExpanded ? "" : "shrank")">
+            @if (_scopes is null)
+            {
+                <div>
+                    Loading scopes...
+                </div>
+            }
+            else
+            {
+                foreach (var scope in _scopes)
+                {
+                    <a href="scopes/@scope.Id">
+                        <div class="menu-link @(scope.IsActive ? "menu-link-active" : "")">
+                            <span class="scope-name">@scope.Name</span>
+                        </div>
+                    </a>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    private ScopeRecord[]? _scopes;
+    
+    [Parameter]
+    public string CloudId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        _scopes = await Menu.GetScopesAsync(CloudId);
+        Menu.SetActiveMenuItem(Nav.Uri);
+    }
+
+    private void ToggleMenu()
+    {
+        Menu.State.MenuExpanded = !Menu.State.MenuExpanded;
+    }
+}

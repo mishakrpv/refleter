@@ -1,0 +1,25 @@
+﻿@page "/scopes/{scopeId}"
+@using WebApp.Components.Layout
+@using WebApp.Services.Impl
+@inject StorageService StorageService
+
+<PageTitle>@_scope.Name — Folder dashboard | Refleter Cloud</PageTitle>
+
+<CloudMenu CloudId="@_cloudId"/>
+
+@code {
+    private ScopeRecord _scope;
+    private string? _cloudId;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        _cloudId = HttpContext?.User.Claims.First(c => c.Type == "sub").Value;
+        _scope = await StorageService.GetScopeAsync(ScopeId);
+    }
+    
+    [Parameter]
+    public string ScopeId { get; set; } = null!;
+    
+    [CascadingParameter]
+    public HttpContext? HttpContext { get; set; }
+}

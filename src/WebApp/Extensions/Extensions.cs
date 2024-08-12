@@ -19,6 +19,8 @@ public static class Extensions
         builder.Services.AddHttpClient<StorageService>(hc => hc.BaseAddress = new Uri("http://storageapi"))
             .AddApiVersion(1.0)
             .AddAuthToken();
+
+        builder.Services.AddScoped<CloudMenuService>();
     }
 
     private static void AddAuthenticationServices(this IHostApplicationBuilder builder)
