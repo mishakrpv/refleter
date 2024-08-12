@@ -16,12 +16,12 @@ public class CloudMenuService(StorageService storageService)
         if (State.Scopes == null) return;
         var startIndex = url.LastIndexOf('/') + 1;
         var itemId = url[startIndex..];
-        State.MenuHaveActiveItem = false;
+        State.MenuHasActiveItem = false;
         foreach (var item in State.Scopes)
         {
             if (item.Id != itemId) continue;
             item.IsActive = true;
-            State.MenuHaveActiveItem = true;
+            State.MenuHasActiveItem = true;
         }
     }
 }
@@ -30,5 +30,5 @@ public class State
 {
     public ScopeRecord[]? Scopes { get; set; }
     public bool MenuExpanded { get; set; }
-    public bool MenuHaveActiveItem { get; set; }
+    public bool MenuHasActiveItem { get; set; }
 }

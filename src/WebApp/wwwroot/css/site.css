@@ -159,12 +159,33 @@ input {
     background-color: transparent;
     transition-duration: 0.15s;
     margin-left: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .expand-button:hover {
     background-color: #ffffff1a;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.expand-button:active {
+    scale: 0.95;
 }
 
 .scope-name {
     text-decoration: none;
+}
+
+.arrow-icon {
+    rotate: .75turn;
+    transition: .1s;
+    width: 16px;
+    height: 16px;
+    color: inherit;
+}
+
+.expand-button.toggled svg {
+    rotate: 1turn;
 }
