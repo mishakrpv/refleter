@@ -1,0 +1,201 @@
+﻿input {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    box-sizing: border-box;
+    font: inherit;
+    color: inherit;
+    background: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+
+.cloud-overview {
+    padding: 20px
+}
+
+.billing-account-card {
+    transition: box-shadow .2s;
+    overflow: hidden;
+    
+    cursor: pointer;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 1px 5px #0003;
+}
+
+.cloud-overview__billing-banner {
+    margin-bottom: 20px;
+    
+    background-color: rgb(66, 65, 71);
+}
+
+.billing-account-card__body {
+    justify-content: space-between;
+    height: 64px;
+    padding: 0 20px;
+    display: flex;
+}
+
+.billing-account-card__account {
+    align-items: center;
+    display: flex;
+}
+
+.billing-account-card__items {
+    align-items: center;
+    display: flex;
+}
+
+.billing-account-card__icon {
+    background-color: #708da6;
+    flex-shrink: 0;
+    margin-right: 16px;
+
+    width: 32px;
+    height: 32px;
+    box-sizing: border-box;
+    color: #ffffffd9;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+}
+
+.account-card-icon {
+    color: inherit;
+    vertical-align: top;
+    line-height: 0;
+}
+
+.billing-account-card__item {
+    flex-direction: column;
+    display: flex;
+
+    margin-right: 32px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.billing-account-card__item-title {
+    opacity: .5;
+    margin-bottom: 4px;
+}
+
+.billing-account-card__item-value {
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 500;
+}
+
+.label {
+    border-radius: 3px;
+    height: 20px;
+    box-sizing: border-box;
+    isolation: isolate;
+    align-items: center;
+    transition-property: opacity, color, background-color;
+    transition-duration: .15s;
+    transition-timing-function: ease-in-out;
+    display: inline-flex;
+    position: relative;
+}
+
+.label_theme_success {
+    color: #6bbc68;
+    background-color: #5bb55733;
+}
+
+.label_theme_failure {
+}
+
+.label__text {
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 400;
+    margin: 0 8px;
+    text-align: center;
+    white-space: nowrap;
+    align-items: baseline;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+}
+
+.label__content {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.cloud-overview__section {
+    
+}
+
+.cloud-overview__section-title {
+    margin-bottom: 20px;
+    display: inline-block;
+    
+    font-size: 15px;
+    color: #ffffffd9;
+}
+
+.cloud-overview__section-content {
+    
+}
+
+.cloud-overview__scopes {
+    
+}
+
+.cloud-overview__filters {
+    align-items: center;
+    gap: 10px;
+    display: flex;
+}
+
+.cloud-overview__filter {
+    
+}
+
+.cloud-overview__filter_type_name {
+    flex-grow: 1;
+}
+
+.text-input {
+    color: #ffffffd9;
+    background-color: transparent;
+    width: 100%;
+    display: inline-block;
+    position: relative;
+}
+
+.text-input__control {
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 400;
+    padding: 5px 8px;
+    flex-grow: 1;
+    margin: 0;
+    box-sizing: border-box;
+    position: relative;
+    
+    border-radius: 6px;
+    border: 1px solid #ffffff26;
+}
+
+.text-input__control:hover {
+    border-color: #ffffff40;
+}
+
+.text-input__control:focus {
+    border-color: #ffffff4d;
+}
+
+
+
+

@@ -1,0 +1,47 @@
+﻿.main-dashboard-cloud-or-scope-id__clipboard-button {
+    margin-left: 5px;
+
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    transition-duration: .15s;
+}
+
+.main-dashboard-cloud-or-scope-id__clipboard-button:hover {
+    background-color: #ffffff1a;
+}
+
+.main-dashboard-cloud-or-scope-id__clipboard-button:hover > .copy-icon {
+    color: #ffffffd9 !important;
+}
+
+.copy-icon {
+    color: inherit;
+    vertical-align: top;
+    line-height: 0;
+
+    transition-duration: .15s;
+}
+
+/*.popup {*/
+/*    background-color: #424147;*/
+/*    border-color: #4d4c52;*/
+/*    border-width: 1px;*/
+/*    z-index: 1000;*/
+/*    visibility: hidden;*/
+/*    */
+/*    transition: height 0.3s ease-in-out;*/
+/*}*/
+
+/*.copy-popup {*/
+/*    height: 30px;*/
+
+/*    transform: translateX(-50%);*/
+/*}*/
+
+/*.popup_open {*/
+/*    visibility: visible;*/
+/*}*/

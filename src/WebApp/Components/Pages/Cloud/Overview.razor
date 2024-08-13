@@ -1,0 +1,79 @@
+﻿<div class="cloud-overview">
+    <div role="button" tabindex="0" class="billing-account-card cloud-overview__billing-banner">
+        <div class="billing-account-card__body">
+            <div class="billing-account-card__account">
+                <div class="billing-account-card__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" class="account-card-icon" fill="currentColor" stroke="none" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 14"><path d="M.125 11.813c0 .738.574 1.312 1.313 1.312h13.124c.711 0 1.313-.574 1.313-1.313V7H.125v4.813Zm5.25-1.86c0-.164.137-.328.328-.328h3.719c.164 0 .328.164.328.328v1.094a.332.332 0 0 1-.328.328H5.703a.316.316 0 0 1-.328-.328V9.953Zm-3.5 0c0-.164.137-.328.328-.328h1.969c.164 0 .328.164.328.328v1.094a.332.332 0 0 1-.328.328H2.203a.316.316 0 0 1-.328-.328V9.953Zm14-7.765A1.33 1.33 0 0 0 14.562.875H1.438C.699.875.125 1.477.125 2.188V3.5h15.75V2.187Z"></path>
+                        </svg>
+                    </svg>
+                </div>
+                <div class="billing-account-card__item">
+                    <div class="billing-account-card__item-title">
+                        Billing account
+                    </div>
+                    <div class="billing-account-card__item-value">
+                        @CloudName
+                    </div>
+                </div>
+            </div>
+            <div class="billing-account-card__items">
+                <div class="billing-account-card__item">
+                    <div class="billing-account-card__item-title">
+                        Balance
+                    </div>
+                    <div class="billing-account-card__item-value">
+                        0,00 ₽ 
+                        @* TODO: Get value from service *@
+                    </div>
+                </div>
+                <div class="billing-account-card__item">
+                    <div class="billing-account-card__item-title">
+                        Status
+                    </div>
+                    <div class="label label_theme_success">
+                        <div class="label__text">
+                            <div class="label__content">
+                                Active
+                            </div>
+                        </div>
+                        @* TODO: Get value and theme from service *@
+                    </div>
+                </div>
+                <div class="billing-account-card__item">
+                    <div class="billing-account-card__item-title">
+                        Consumption
+                    </div>
+                    <div class="billing-account-card__item-value">
+                        0,00 ₽
+                    </div>
+                    @* TODO: Get value from service *@
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cloud-overview__section">
+        <h2 class="cloud-overview__section-title">Scopes</h2>
+        <div class="cloud-overview__section-content">
+            <div class="cloud-overview__scopes">
+                <div class="cloud-overview__filters">
+                    <div class="cloud-overview__filter cloud-overview__filter_type_name">
+                        <span class="text-input">
+                            <input class="text-input__control" placeholder="Filter by name or ID" value />
+                        </span>
+                    </div>
+                </div>
+                <div class="cloud-overview__list">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    [Parameter]
+    public string CloudName { get; set; }
+
+}

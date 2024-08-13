@@ -17,7 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="wwwroot\fonts\" />
+      <_ContentIncludedByDefault Remove="Components\Pages\Cloud\Scopes\Scopes.razor" />
     </ItemGroup>
 
 </Project>

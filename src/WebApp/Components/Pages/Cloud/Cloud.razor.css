@@ -1,0 +1,121 @@
+﻿@font-face {
+    font-family: "Menlo";
+    src: url("fonts/Menlo-Regular.ttf") format("truetype");
+}
+
+.main-dashboard__main {
+    flex-grow: 1;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.main-dashboard__content {
+    min-width: 856px;
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
+.main-dashboard-header {
+    flex-direction: column;
+    gap: 4px;
+    padding: 20px 20px 0;
+    display: flex;
+}
+
+.main-dashboard__tabs {
+    box-sizing: border-box;
+    width: calc(100% - 40px);
+    margin: 8px 20px 0;
+    
+    height: fit-content;
+}
+
+.page-wrapper {
+    display: flex;
+}
+
+.main-dashboard-header__top {
+    justify-content: space-between;
+    display: flex;
+}
+
+.main-dashboard-header__name {
+    align-items: center;
+    display: flex;
+}
+
+.main-dashboard-header__cloud-icon {
+    
+}
+
+.main-dashboard-header__text {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 500;
+    margin: 0 8px 0 6px;
+    
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.main-dashboard-cloud-or-scope-id {
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 400;
+    font-family: "Menlo","Monaco","Consolas","Ubuntu Mono","Liberation Mono","DejaVu Sans Mono","Courier New","Courier", monospace;
+    color: #ffffff80;
+    align-items: center;
+    display: inline-flex;
+}
+
+.adaptive-tabs {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.adaptive-tabs__tabs-list {
+    flex-wrap: wrap;
+    align-items: flex-end;
+    display: flex;
+    overflow: hidden;
+
+    border-bottom: 1px solid #ffffff26;
+}
+
+.adaptive-tabs__tab-container {
+    padding-inline-end: 24px;
+    overflow: hidden;
+    
+    max-width: 25%;
+}
+
+.adaptive-tabs__tab {
+    border-block-end: 2px solid transparent;
+    padding: 2px 1px 0;
+    box-sizing: border-box;
+    line-height: 36px;
+    color: #ffffffb3;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    outline: none;
+    width: 100%;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.adaptive-tabs__tab_active {
+    color: #ffffffd9; !important;
+
+    border-bottom: 2px solid #5282ff !important;
+}
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+    overflow: hidden;
+    width: 100%;
+    min-height: 100%;
+}
