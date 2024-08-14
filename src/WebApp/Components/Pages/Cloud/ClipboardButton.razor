@@ -1,7 +1,7 @@
 ﻿@rendermode InteractiveServer
 @inject IJSRuntime JSRuntime
 
-<button class="main-dashboard-cloud-or-scope-id__clipboard-button" @onclick="CopyIdAsync" @onmouseover="() => { _copyPopupVisible = true; }" @onmouseleave="() => { _copyPopupVisible = false; }">
+<button class="main-dashboard-cloud-or-scope-id__clipboard-button" @onclick="CopyAsync" @onmouseover="() => { _copyPopupVisible = true; }" @onmouseleave="() => { _copyPopupVisible = false; }">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" class="copy-icon" fill="currentColor" stroke="none" aria-hidden="true">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16">
             <path fill="currentColor" fill-rule="evenodd" d="M12 2.5H8A1.5 1.5 0 0 0 6.5 4v1H8a3 3 0 0 1 3 3v1.5h1A1.5 1.5 0 0 0 13.5 8V4A1.5 1.5 0 0 0 12 2.5ZM11 11h1a3 3 0 0 0 3-3V4a3 3 0 0 0-3-3H8a3 3 0 0 0-3 3v1H4a3 3 0 0 0-3 3v4a3 3 0 0 0 3 3h4a3 3 0 0 0 3-3v-1ZM4 6.5h4A1.5 1.5 0 0 1 9.5 8v4A1.5 1.5 0 0 1 8 13.5H4A1.5 1.5 0 0 1 2.5 12V8A1.5 1.5 0 0 1 4 6.5Z" clip-rule="evenodd"></path>
@@ -25,11 +25,11 @@
 
     private bool _copyPopupVisible;
     
-    private async Task CopyIdAsync()
+    private async Task CopyAsync()
     {
-        await JSRuntime.InvokeVoidAsync("clipboardCopy.copyText", CloudId);
+        await JSRuntime.InvokeVoidAsync("clipboardCopy.copyText", TextToCopy);
     }
     
     [Parameter]
-    public string CloudId { get; set; }
+    public string TextToCopy { get; set; }
 }

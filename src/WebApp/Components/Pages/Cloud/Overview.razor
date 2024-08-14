@@ -1,4 +1,7 @@
-﻿<div class="cloud-overview">
+﻿@using WebApp.Services.Impl
+@inject StorageService StorageService
+
+<div class="cloud-overview">
     <div role="button" tabindex="0" class="billing-account-card cloud-overview__billing-banner">
         <div class="billing-account-card__body">
             <div class="billing-account-card__account">
@@ -62,17 +65,22 @@
                             <input class="text-input__control" placeholder="Filter by name or ID" value />
                         </span>
                     </div>
+                    <CreateScopeButton/>
                 </div>
                 <div class="cloud-overview__list">
-
+                    <Table CloudId="@CloudId"></Table>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-@code {
+@* <CreateScopeModal/> *@
 
+@code {
+    [Parameter]
+    public string CloudId { get; set; }
+    
     [Parameter]
     public string CloudName { get; set; }
 

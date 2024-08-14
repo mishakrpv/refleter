@@ -103,3 +103,12 @@
         overflow-y: auto;
     }
 }
+
+.navbar-header__header-divider {
+    bottom: 0;
+    color: rgba(0, 0, 0, 0.4);
+    left: 0;
+    z-index: -2;
+    vertical-align: top;
+    line-height: 0;
+}

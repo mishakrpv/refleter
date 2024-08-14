@@ -5,16 +5,18 @@
 
 <PageTitle>@_scope.Name — Folder dashboard | Refleter Cloud</PageTitle>
 
-<CloudMenu CloudId="@_cloudId"/>
+<CloudMenu CloudId="@_cloudId" CloudName="@_cloudName"/>
 
 @code {
     private ScopeRecord _scope;
+    private string? _cloudName;
     private string? _cloudId;
     
     protected override async Task OnInitializedAsync()
     {
         _cloudId = HttpContext?.User.Claims.First(c => c.Type == "sub").Value;
         _scope = await StorageService.GetScopeAsync(ScopeId);
+        _cloudName = HttpContext?.User.Claims.First(c => c.Type == "name").Value;
     }
     
     [Parameter]

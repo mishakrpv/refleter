@@ -24,12 +24,9 @@ public record ScopeRecord(
     string Name,
     string IconColorHexCode,
     DateTime DateCreated,
-    SecretRecord[] Secrets)
-{
-    public bool IsActive { get; set; }
-};
+    SecretRecord[] Secrets);
 
-public abstract record SecretRecord(
+public record SecretRecord(
     string Id,
     string Name,
     DateTime LastUpdated);

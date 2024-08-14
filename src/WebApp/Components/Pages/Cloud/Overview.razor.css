@@ -1,19 +1,4 @@
-﻿input {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    box-sizing: border-box;
-    font: inherit;
-    color: inherit;
-    background: transparent;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-}
-
-
-.cloud-overview {
+﻿.cloud-overview {
     padding: 20px
 }
 
@@ -90,7 +75,7 @@
     font-weight: 500;
 }
 
-.label {
+::deep .label {
     border-radius: 3px;
     height: 20px;
     box-sizing: border-box;
@@ -103,15 +88,15 @@
     position: relative;
 }
 
-.label_theme_success {
+::deep .label_theme_success {
     color: #6bbc68;
     background-color: #5bb55733;
 }
 
-.label_theme_failure {
+::deep .label_theme_failure {
 }
 
-.label__text {
+::deep .label__text {
     font-size: 13px;
     line-height: 20px;
     font-weight: 400;
@@ -124,7 +109,7 @@
     overflow: hidden;
 }
 
-.label__content {
+::deep .label__content {
     text-overflow: ellipsis;
     overflow: hidden;
 }
@@ -196,6 +181,48 @@
     border-color: #ffffff4d;
 }
 
+.button {
+    border-radius: 6px;
+    color: #ffffffd9;
+    background-color: #4b71d6;
+    height: 28px;
+    padding: 12px;
+    cursor: pointer;
+    box-sizing: border-box;
+    user-select: none;
+    text-align: center;
+    white-space: nowrap;
+    touch-action: manipulation;
+    justify-content: center;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    display: inline-flex;
+    position: relative;
+    overflow: visible;
+    align-items: center;
+    transition: .1s;
+}
 
+.button:hover {
+    background-color: #638fff;
+}
 
+.button:focus {
+    outline-color: #4b71d6;
+}
 
+.button:active {
+    scale: 0.95;
+}
+
+.button__text {
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.cloud-overview__list {
+    margin-top: 20px;
+    position: relative;
+    overflow: auto;
+}

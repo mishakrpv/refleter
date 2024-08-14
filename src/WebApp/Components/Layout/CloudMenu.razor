@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="scopes-list__scrollable-container @(Menu.State.MenuExpanded ? "" : "shrank")">
-            @if (_scopes is null)
+            @if (_items is null)
             {
                 <div>
                     Loading scopes...
@@ -34,14 +34,14 @@
             }
             else
             {
-                foreach (var scope in _scopes)
+                foreach (var item in _items)
                 {
-                    <a href="scopes/@scope.Id">
-                        <div class="menu-link @(scope.IsActive ? "menu-link-active" : "") scope-item">
-                            <div class="scope-icon" style="color: rgb(255, 255, 255); background-color: @scope.IconColorHexCode;">
-                                <span>@scope.Name[..2].ToUpper()</span>
+                    <a href="scopes/@item.Id">
+                        <div class="menu-link @(item.IsActive ? "menu-link-active" : "") scope-item">
+                            <div class="scope-icon" style="color: rgb(255, 255, 255); background-color: @item.IconColorHexCode;">
+                                <span>@item.Name[..2].ToUpper()</span>
                             </div>
-                            <div class="scope-name">@scope.Name</div>
+                            <div class="scope-name">@item.Name</div>
                         </div>
                     </a>
                 }
@@ -51,7 +51,7 @@
 </div>
 
 @code {
-    private ScopeRecord[]? _scopes;
+    private MenuItem[]? _items;
     
     [Parameter]
     public string CloudId { get; set; }
@@ -61,7 +61,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        _scopes = await Menu.GetScopesAsync(CloudId);
+        _items = await Menu.GetMenuItemsAsync(CloudId);
         Menu.SetActiveMenuItem(Nav.Uri);
     }
 

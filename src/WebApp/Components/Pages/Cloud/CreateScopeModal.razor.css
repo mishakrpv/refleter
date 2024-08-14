@@ -1,0 +1,187 @@
+﻿:root {
+    --color-text-base: rgba(255, 255, 255, 0.85);
+    --color-sl-item: rgba(255, 255, 255, 0.85);
+    --color-background-base-btn-hover: rgba(255, 255, 255, 0.1);
+    --color-icon-base-hover: #ffffffbf;
+    --color-meta: #ffffff80;
+    --color-alert-base: rgb(232, 73, 69);
+    --color-disabled-text: rgba(255, 255, 255, 0.3);
+    --color-disabled-background: #ffffff12;
+}
+
+.overlay {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+    left: 0;
+    top: 0;
+    display: none;
+}
+
+.create-scope-dialog {
+    width: 480px;
+    height: fit-content;
+    background-color: rgb(45, 44, 51);
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    padding: 0;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 13px;
+}
+
+.cs-header {
+    width: 100%;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.85);
+    height: 49px;
+    align-items: center;
+    display: flex;
+    padding: 20px 10px 10px 32px;
+}
+
+.cs-header-title {
+    padding-top: 4px;
+    width: 94%;
+    max-width: 408px;
+    font-size: 17px;
+}
+
+.btn:active {
+    scale: 0.95;
+}
+
+.close-btn {
+    background-color: transparent;
+    width: 32px;
+    height: 32px;
+    transition: .15s;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+}
+
+.close-btn:hover svg {
+    color: #ffffffbf;
+}
+
+.close-icon {
+    scale: 1.5;
+    color: #ffffff80;
+    transition: .15s;
+    height: 12px;
+    width: 12px;
+    justify-content: center;
+}
+
+.cs-dialog-body {
+    padding: 10px 32px 10px 32px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.form-control-label {
+    padding-top: 4px;
+    width: 195px;
+}
+
+.required-sign {
+    color: rgb(232, 73, 69);
+}
+
+.cs-name-input-container {
+    display: inline-block;
+    vertical-align: top;
+    flex-direction: column;
+    height: fit-content;
+    width: 218px;
+}
+
+.cs-name-input {
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.cs-name-input.invalid {
+    border-color: rgb(232, 73, 69);
+}
+
+.form-control {
+    border: 1px solid #ffffff26;
+    width: 100%;
+    max-width: 218px;
+    border-radius: 4px;
+    background-color: transparent;
+    outline: none;
+    height: 26px;
+    padding: 5px 8px 5px 8px;
+    font-size: 13px;
+    line-height: 16px;
+}
+
+.input-error-msg {
+    display: none;
+    color: rgb(232, 73, 69);
+    margin-top: 4px;
+}
+
+.cs-dialog-footer {
+    padding-top: 20px;
+    padding-left: 180px;
+    padding-bottom: 28px;
+}
+
+.cs-btns-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.cs-btn {
+    height: 36px;
+    width: 128px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    transition: .15s;
+    border-radius: 6px;
+    margin-right: 8px;
+}
+
+.cs-btn.locked {
+    background-color: #ffffff12;
+    color: rgba(255, 255, 255, 0.3);
+    cursor: default;
+    pointer-events: none;
+}
+
+.cs-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+}
+
+.creation-confirm-btn {
+    background-color: #4b71d6;
+}
+
+.creation-confirm-btn:hover {
+    background-color: #638fff !important;
+}
+
+.creation-cancel-btn {
+    color: rgba(255, 255, 255, 0.85);
+}

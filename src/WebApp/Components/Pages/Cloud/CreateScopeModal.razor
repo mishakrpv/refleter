@@ -1,0 +1,90 @@
+﻿@using WebApp.Services.Impl
+@inject StorageService StorageService
+
+<div id="d_overlay" class="overlay"></div>
+<dialog id="createScopeDialog" class="create-scope-dialog">
+    <div class="cs-header">
+        <span class="cs-header-title">Create scope</span>
+        <button id="createScopeCloseBtn" class="btn close-btn" type="button">
+            <svg aria-hidden="true" focusable="false" class="close-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display: inline-block; user-select: none; vertical-align: text-bottom; overflow: visible;">
+                <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+            </svg>
+        </button>
+    </div>
+    <div class="cs-dialog-body">
+        <div class="input-container">
+            <label class="form-control-label">Name<span class="required-sign" aria-hidden="true">*</span></label>
+            <span class="cs-name-input-container">
+                <input id="scopeNameInput" class="cs-name-input form-control" required minlength="3" maxlength="100" pattern="[a-z]+" />
+                <span id="snErrorMsg" class="input-error-msg"></span>
+            </span>
+        </div>
+    </div>
+    <div class="cs-dialog-footer">
+        <div class="cs-btns-container">
+            <div id="creationCancelBtn" class="btn creation-cancel-btn cs-btn">Cancel</div>
+            <div id="creationConfirmBtn" class="btn creation-confirm-btn cs-btn locked">Create</div>
+        </div>
+    </div>
+</dialog>
+
+<script>
+    const d_overlay = document.getElementById('d_overlay')
+    
+    const createScopeBtn = document.getElementById('createScopeBtn')
+    const createScopeDialog = document.getElementById('createScopeDialog')
+
+    createScopeBtn.onclick = () => {
+        d_overlay.style.display = 'flex'
+        createScopeDialog.showModal()
+    }
+    
+    const createScopeCloseBtn = document.getElementById('createScopeCloseBtn')
+    const createScopeCancelBtn = document.getElementById('creationCancelBtn')
+
+    createScopeDialog.onclose = () => {
+        d_overlay.style.display = 'none'
+    }
+    
+    createScopeCancelBtn.onclick = () => {
+        createScopeDialog.close()
+    }
+
+    createScopeCloseBtn.onclick = () => {
+        createScopeDialog.close()
+    }
+    
+    const scopeNameInput = document.getElementById('scopeNameInput')
+    const scopeNameErrorMsg = document.getElementById('snErrorMsg')
+    const createConfirmationBtn = document.getElementById('creationConfirmBtn')
+    
+    scopeNameInput.oninput = () => {
+        let validityState = scopeNameInput.validity;
+        let message = ''
+
+        if (!validityState.valid) {
+            if (validityState.valueMissing) {
+                message = 'Empty field';
+            } else if (validityState.patternMismatch) {
+                message = 'Can contain lowercase Latin letters, numbers, and dashes. The first character must be a letter, and the last character cannot be a dash.';
+            } else {
+                message = 'Value can’t be shorter than 3 characters';
+            }
+            scopeNameErrorMsg.style.display = 'block'
+            scopeNameInput.classList.add('invalid')
+            scopeNameErrorMsg.textContent = message
+            createConfirmationBtn.classList.add('locked')
+        } else {
+            createConfirmationBtn.classList.remove('locked')
+            scopeNameErrorMsg.style.display = 'none'
+            scopeNameInput.classList.remove('invalid')
+        }
+    }
+
+</script>
+
+@code {
+
+    
+
+}

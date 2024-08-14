@@ -18,7 +18,7 @@
                     </h1>
                     <div class="main-dashboard-cloud-or-scope-id">
                         @CloudId
-                        <ClipboardButton CloudId="@CloudId"/>
+                        <ClipboardButton TextToCopy="@CloudId"/>
                     </div>
                 </div>
             </div>
@@ -34,9 +34,11 @@
                         </a>
                     </div>
                     <div class="adaptive-tabs__tab-container">
-                        <div class="adaptive-tabs__tab @(Section?.ToLower() == "quotas" ? "adaptive-tabs__tab_active" : "")">
-                            Quotas
-                        </div>
+                        <a href="cloud/@CloudId?section=quotas">
+                            <div class="adaptive-tabs__tab @(Section?.ToLower() == "quotas" ? "adaptive-tabs__tab_active" : "")">
+                                Quotas
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -44,7 +46,7 @@
         <div class="page-wrapper">
             @if (Section == string.Empty || Section is null || Section.ToLower() == "overview")
             {
-                <Overview CloudName="@_cloudName"/>
+                <Overview CloudName="@_cloudName" CloudId="@CloudId"/>
             }
             else if (Section?.ToLower() == "quotas")
             {

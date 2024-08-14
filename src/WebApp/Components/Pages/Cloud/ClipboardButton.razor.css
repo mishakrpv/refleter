@@ -18,6 +18,10 @@
     color: #ffffffd9 !important;
 }
 
+.main-dashboard-cloud-or-scope-id__clipboard-button:active {
+    scale: 0.95;
+}
+
 .copy-icon {
     color: inherit;
     vertical-align: top;
