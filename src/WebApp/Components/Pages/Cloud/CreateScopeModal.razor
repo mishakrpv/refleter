@@ -1,90 +1,148 @@
-﻿@using WebApp.Services.Impl
-@inject StorageService StorageService
+﻿@rendermode InteractiveServer
+@using System.Text.RegularExpressions
+@* @implements IDisposable *@
 
-<div id="d_overlay" class="overlay"></div>
-<dialog id="createScopeDialog" class="create-scope-dialog">
-    <div class="cs-header">
-        <span class="cs-header-title">Create scope</span>
-        <button id="createScopeCloseBtn" class="btn close-btn" type="button">
-            <svg aria-hidden="true" focusable="false" class="close-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display: inline-block; user-select: none; vertical-align: text-bottom; overflow: visible;">
-                <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
-            </svg>
-        </button>
-    </div>
-    <div class="cs-dialog-body">
-        <div class="input-container">
-            <label class="form-control-label">Name<span class="required-sign" aria-hidden="true">*</span></label>
-            <span class="cs-name-input-container">
-                <input id="scopeNameInput" class="cs-name-input form-control" required minlength="3" maxlength="100" pattern="[a-z]+" />
-                <span id="snErrorMsg" class="input-error-msg"></span>
-            </span>
+<div class="modal @(Show ? "modal_open" : "")">
+    <div class="modal__content-aligner">
+        <div class="modal__content-wrapper">
+            <div tabindex="-1" role="dialog" aria-modal="true" class="model__content">
+                <div class="dialog">
+                    <form class="form form_dialog-more">
+                        <div class="dialog-header">
+                            <div class="dialog-header__caption">Create scope</div>
+                        </div>
+                        <div class="dialog-body">
+                            <div class="form__top">
+                                <div class="form-layout">
+                                    <div class="form-layout__row">
+                                        <div class="form-layout__row-left">
+                                            <div class="form-layout__row-title form-layout__row-title_required">Name</div>
+                                        </div>
+                                        <div class="form-layout__row-right">
+                                            <div class="form-field-text">
+                                                <span class="field-wrapper @(_valid ? "" : "field-wrapper_state_error")">
+                                                    <span class="text-input text-input_view_normal text-input_size_m @(_valid ? "" : "text-input_state_error") text-input_pin_round-round form-field-text__control">
+                                                        <span class="text-input__content">
+                                                            <input value="@_name" class="text-input__control text-input__control_type_input" name="name" aria-invalid="true"
+                                                                   @oninput="@((ChangeEventArgs e) => { _name = e?.Value?.ToString(); OnInput(); })" >
+                                                        </span>
+                                                    </span>
+                                                    <div class="field-wrapper__error-text">@_errorMessage</div>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dialog-footer">
+                            <div class="g-dialog-footer__children"></div>
+                            <div class="g-dialog-footer__bts-wrapper"><div class="g-dialog-footer__button g-dialog-footer__button_action_cancel"><button class="g-button g-button_view_flat g-button_size_l g-button_pin_round-round g-button_width_max" type="button"><span class="g-button__text">Cancel</span></button></div><div class="g-dialog-footer__button g-dialog-footer__button_action_apply"><button class="g-button g-button_view_action g-button_size_l g-button_pin_round-round g-button_disabled g-button_width_max g-dialog-footer__button-apply g-dialog-footer__button-apply_preset_default" type="submit" disabled=""><span class="g-button__text">Create</span></button></div></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="cs-dialog-footer">
-        <div class="cs-btns-container">
-            <div id="creationCancelBtn" class="btn creation-cancel-btn cs-btn">Cancel</div>
-            <div id="creationConfirmBtn" class="btn creation-confirm-btn cs-btn locked">Create</div>
-        </div>
-    </div>
-</dialog>
-
-<script>
-    const d_overlay = document.getElementById('d_overlay')
-    
-    const createScopeBtn = document.getElementById('createScopeBtn')
-    const createScopeDialog = document.getElementById('createScopeDialog')
-
-    createScopeBtn.onclick = () => {
-        d_overlay.style.display = 'flex'
-        createScopeDialog.showModal()
-    }
-    
-    const createScopeCloseBtn = document.getElementById('createScopeCloseBtn')
-    const createScopeCancelBtn = document.getElementById('creationCancelBtn')
-
-    createScopeDialog.onclose = () => {
-        d_overlay.style.display = 'none'
-    }
-    
-    createScopeCancelBtn.onclick = () => {
-        createScopeDialog.close()
-    }
-
-    createScopeCloseBtn.onclick = () => {
-        createScopeDialog.close()
-    }
-    
-    const scopeNameInput = document.getElementById('scopeNameInput')
-    const scopeNameErrorMsg = document.getElementById('snErrorMsg')
-    const createConfirmationBtn = document.getElementById('creationConfirmBtn')
-    
-    scopeNameInput.oninput = () => {
-        let validityState = scopeNameInput.validity;
-        let message = ''
-
-        if (!validityState.valid) {
-            if (validityState.valueMissing) {
-                message = 'Empty field';
-            } else if (validityState.patternMismatch) {
-                message = 'Can contain lowercase Latin letters, numbers, and dashes. The first character must be a letter, and the last character cannot be a dash.';
-            } else {
-                message = 'Value can’t be shorter than 3 characters';
-            }
-            scopeNameErrorMsg.style.display = 'block'
-            scopeNameInput.classList.add('invalid')
-            scopeNameErrorMsg.textContent = message
-            createConfirmationBtn.classList.add('locked')
-        } else {
-            createConfirmationBtn.classList.remove('locked')
-            scopeNameErrorMsg.style.display = 'none'
-            scopeNameInput.classList.remove('invalid')
-        }
-    }
-
-</script>
+</div>
 
 @code {
 
+    [Parameter]
+    public string CloudId { get; set; }
     
+    [Parameter]
+    public bool Show { get; set; }
 
+    private string? _name;
+
+    private string? _errorMessage;
+
+    private bool _valid;
+
+    private void OnInput()
+    {
+        if (_name is "" or null)
+        {
+            _errorMessage = "Empty field";
+            _valid = false;
+        }
+        else if (_name.Length < 3)
+        {
+            _errorMessage = "Value can’t be shorter than 3 characters";
+            _valid = false;
+        }
+        else if (_name.Length > 100)
+        {
+            _errorMessage = "Value can’t be greater than 100 characters";
+            _valid = false;
+        }
+        else if (!Regex.IsMatch(_name, @"^[a-z0-9]+$"))
+        {
+            _errorMessage = "Can contain lowercase Latin letters, numbers, and dashes. The first character must be a letter, and the last character cannot be a dash.";
+            _valid = false;
+        }
+        else
+        {
+            _errorMessage = string.Empty;
+            _valid = true;
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        _valid = true;
+    }
+    
+    // [SupplyParameterFromForm]
+    // public CreateScopeModalModel? Model { get; set; }
+    //
+    // private ValidationMessageStore? _messageStore;
+    //
+    // private EditContext? _editContext;
+    //
+    // protected override void OnInitialized()
+    // {
+    //     Model ??= new();
+    //     _editContext = new(Model);
+    //     _editContext.OnValidationRequested += HandleValidationRequested;
+    //     _messageStore = new(_editContext);
+    // }
+    //
+    // private void HandleValidationRequested(object? sender,
+    //     ValidationRequestedEventArgs args)
+    // {
+    //     _messageStore?.Clear();
+    //
+    //     var name = Model!.Name;
+    //     if (name is "" or null)
+    //     {
+    //         _messageStore?.Add(() => Model.Name, "Empty field");
+    //     }
+    //     else if (name.Length < 3)
+    //     {
+    //         _messageStore?.Add(() => Model.Name, "Value can’t be shorter than 3 characters");
+    //     }
+    //     else if (name.Length > 100)
+    //     {
+    //         _messageStore?.Add(() => Model.Name, "Value can’t be greater than 100 characters");
+    //     }
+    //     else if (Regex.IsMatch(name, "[a-z]+"))
+    //     {
+    //         _messageStore?.Add(() => Model.Name, "Can contain lowercase Latin letters, numbers, and dashes. The first character must be a letter, and the last character cannot be a dash.");
+    //     }
+    // }
+    //
+    // public void Dispose()
+    // {
+    //     if (_editContext is not null)
+    //     {
+    //         _editContext.OnValidationRequested -= HandleValidationRequested;
+    //     }
+    // }
+    //
+    // public class CreateScopeModalModel
+    // {
+    //     public string Name { get; set; }
+    // }
 }

@@ -272,7 +272,6 @@ input {
 
 .button__copy-button {
     border-radius: 3px;
-    transition: .15s;
 
     display: flex;
     align-items: center;

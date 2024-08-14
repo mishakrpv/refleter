@@ -1,4 +1,6 @@
-﻿namespace WebApp.Services.Impl;
+﻿using System.Text.Json.Nodes;
+
+namespace WebApp.Services.Impl;
 
 public sealed class StorageService(HttpClient client)
 {
@@ -16,6 +18,15 @@ public sealed class StorageService(HttpClient client)
     {
         var requestUri = $"{RemoteServiceBaseUrl}/scope/{id}";
         return (await _client.GetFromJsonAsync<ScopeRecord>(requestUri))!;
+    }
+
+    public async Task CreateScopeAsync(string cloudId, string name)
+    {
+        const string requestUri = $"{RemoteServiceBaseUrl}/scope/create";
+
+        var content = new { Name = name, UserId = cloudId };
+        
+        await _client.PostAsJsonAsync(requestUri, content);
     }
 }
 

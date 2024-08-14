@@ -1,5 +1,20 @@
-﻿<button class="button" type="button" id="createScopeBtn">
+﻿@rendermode InteractiveServer
+
+<button class="button" type="button" @onclick="OnClick">
     <span class="button__text">Create scope</span>
 </button>
 
-<CreateScopeModal/>
+<CreateScopeModal CloudId="@CloudId" Show="@_modalShow"/>
+
+@code {
+    private bool _modalShow;
+
+    private void OnClick()
+    {
+        _modalShow = true;
+    }
+
+    [Parameter]
+    public string CloudId { get; set; }
+
+}
