@@ -25,6 +25,12 @@ public class CloudMenuService(StorageService storageService)
             State.MenuHasActiveItem = true;
         }
     }
+    
+    public async Task UpdateAsync(string cloudId)
+    {
+        State.Items = (await _storageService.GetScopesByCloudIdAsync(cloudId))
+            .Select(s => new MenuItem(s.Id, s.Name, s.IconColorHexCode, s.DateCreated, s.Secrets)).ToArray();
+    }
 }
 
 public class State

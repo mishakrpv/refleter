@@ -63,7 +63,7 @@
     {
         _cloudName = HttpContext?.User.Claims.First(c => c.Type == "name").Value;
     }
-
+    
     [SupplyParameterFromQuery]
     public string? Section { get; set; }
     

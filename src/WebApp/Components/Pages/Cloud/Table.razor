@@ -1,5 +1,6 @@
 ﻿@using WebApp.Services.Impl
-@inject StorageService StorageService
+@inject TableService TableService
+@rendermode InteractiveServer
 
 <table class="table__table">
     <thead class="table__head">
@@ -105,11 +106,11 @@
 </table>
 
 @code {
-    private ScopeRecord[]? _scopes;
+    private List<TableItem>? _scopes;
 
     protected override async Task OnInitializedAsync()
     {
-        _scopes = await StorageService.GetScopesByCloudIdAsync(CloudId);
+        _scopes = await TableService.GetItemsAsync(CloudId);
     }
 
     [Parameter]

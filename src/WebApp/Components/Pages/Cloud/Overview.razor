@@ -65,7 +65,7 @@
                             <input class="text-input__control" placeholder="Filter by name or ID" value />
                         </span>
                     </div>
-                    <CreateScopeButton CloudId="@CloudId"/>
+                    <CreateScopeModal CloudId="@CloudId"/>
                 </div>
                 <div class="cloud-overview__list">
                     <Table CloudId="@CloudId"></Table>
@@ -74,8 +74,6 @@
         </div>
     </div>
 </div>
-
-@* <CreateScopeModal/> *@
 
 @code {
     [Parameter]

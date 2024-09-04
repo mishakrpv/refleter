@@ -30,6 +30,7 @@ public static class Extensions
 
         builder.AddRabbitMqEventBus(Constants.EVENT_BUS_CONNECTION_NAME)
             .AddSubscription<UserCreatedIntegrationEvent, UserCreatedIntegrationEventHandler>()
+            .AddSubscription<ScopeCreatedIntegrationEvent, ScopeCreatedIntegrationEventHandler>()
             .ConfigureJsonOptions(options => options.TypeInfoResolverChain.Add(IntegrationEventContext.Default));
 
         builder.Services.AddControllers();

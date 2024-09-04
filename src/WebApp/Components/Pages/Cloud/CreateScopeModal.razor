@@ -1,8 +1,17 @@
 ﻿@rendermode InteractiveServer
 @using System.Text.RegularExpressions
+@using WebApp.Services.Impl
+@inject StorageService StorageService
+
+@inject CloudMenuService CloudMenuService
+@inject TableService TableService
 @* @implements IDisposable *@
 
-<div class="modal @(Show ? "modal_open" : "")">
+<button class="show-modal-button" type="button" @onclick="OnClick">
+    <span class="show-modal-button__text">Create scope</span>
+</button>
+
+<div class="modal @(_show ? "modal_open" : "")">
     <div class="modal__content-aligner">
         <div class="modal__content-wrapper">
             <div tabindex="-1" role="dialog" aria-modal="true" class="model__content">
@@ -23,8 +32,8 @@
                                                 <span class="field-wrapper @(_valid ? "" : "field-wrapper_state_error")">
                                                     <span class="text-input text-input_view_normal text-input_size_m @(_valid ? "" : "text-input_state_error") text-input_pin_round-round form-field-text__control">
                                                         <span class="text-input__content">
-                                                            <input value="@_name" class="text-input__control text-input__control_type_input" name="name" aria-invalid="true"
-                                                                   @oninput="@((ChangeEventArgs e) => { _name = e?.Value?.ToString(); OnInput(); })" >
+                                                            <input value="@_scopeName" class="text-input__control text-input__control_type_input" name="name" aria-invalid="true"
+                                                                   @oninput="@((ChangeEventArgs e) => { _scopeName = e?.Value?.ToString(); OnInput(); })" >
                                                         </span>
                                                     </span>
                                                     <div class="field-wrapper__error-text">@_errorMessage</div>
@@ -36,8 +45,19 @@
                             </div>
                         </div>
                         <div class="dialog-footer">
-                            <div class="g-dialog-footer__children"></div>
-                            <div class="g-dialog-footer__bts-wrapper"><div class="g-dialog-footer__button g-dialog-footer__button_action_cancel"><button class="g-button g-button_view_flat g-button_size_l g-button_pin_round-round g-button_width_max" type="button"><span class="g-button__text">Cancel</span></button></div><div class="g-dialog-footer__button g-dialog-footer__button_action_apply"><button class="g-button g-button_view_action g-button_size_l g-button_pin_round-round g-button_disabled g-button_width_max g-dialog-footer__button-apply g-dialog-footer__button-apply_preset_default" type="submit" disabled=""><span class="g-button__text">Create</span></button></div></div>
+                            <div class="dialog-footer__children"></div>
+                            <div class="dialog-footer__bts-wrapper">
+                                <div class="dialog-footer__button dialog-footer__button_action_cancel">
+                                    <button @onclick="() => { _show = false; }" class="button button_view_flat button_size_l button_pin_round-round button_width_max" type="button">
+                                        <span class="button__text">Cancel</span>
+                                    </button>
+                                </div>
+                                <div class="dialog-footer__button dialog-footer__button_action_apply">
+                                    <button @onclick="OnSubmitAsync" class="button button_view_action button_size_l button_pin_round-round @(_disabled ? "button_disabled" : "") button_width_max dialog-footer__button-apply dialog-footer__button-apply_preset_default" type="submit" disabled="@_disabled">
+                                        <span class="button__text">Create</span>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -50,99 +70,70 @@
 
     [Parameter]
     public string CloudId { get; set; }
-    
-    [Parameter]
-    public bool Show { get; set; }
 
-    private string? _name;
+    private bool _show;
+    
+    private string? _scopeName;
 
     private string? _errorMessage;
 
+    private bool _disabled;
+    
     private bool _valid;
 
     private void OnInput()
     {
-        if (_name is "" or null)
+        if (_scopeName is "" or null)
         {
             _errorMessage = "Empty field";
+            _disabled = true;
             _valid = false;
         }
-        else if (_name.Length < 3)
+        else if (_scopeName.Length < 3)
         {
             _errorMessage = "Value can’t be shorter than 3 characters";
+            _disabled = true;
             _valid = false;
         }
-        else if (_name.Length > 100)
+        else if (_scopeName.Length > 100)
         {
             _errorMessage = "Value can’t be greater than 100 characters";
+            _disabled = true;
             _valid = false;
         }
-        else if (!Regex.IsMatch(_name, @"^[a-z0-9]+$"))
+        else if (!Regex.IsMatch(_scopeName, @"^[a-z0-9]+$"))
         {
             _errorMessage = "Can contain lowercase Latin letters, numbers, and dashes. The first character must be a letter, and the last character cannot be a dash.";
+            _disabled = true;
             _valid = false;
         }
         else
         {
             _errorMessage = string.Empty;
+            _disabled = false;
             _valid = true;
         }
     }
 
     protected override void OnInitialized()
     {
+        _show = false;
+        _disabled = true;
         _valid = true;
     }
-    
-    // [SupplyParameterFromForm]
-    // public CreateScopeModalModel? Model { get; set; }
-    //
-    // private ValidationMessageStore? _messageStore;
-    //
-    // private EditContext? _editContext;
-    //
-    // protected override void OnInitialized()
-    // {
-    //     Model ??= new();
-    //     _editContext = new(Model);
-    //     _editContext.OnValidationRequested += HandleValidationRequested;
-    //     _messageStore = new(_editContext);
-    // }
-    //
-    // private void HandleValidationRequested(object? sender,
-    //     ValidationRequestedEventArgs args)
-    // {
-    //     _messageStore?.Clear();
-    //
-    //     var name = Model!.Name;
-    //     if (name is "" or null)
-    //     {
-    //         _messageStore?.Add(() => Model.Name, "Empty field");
-    //     }
-    //     else if (name.Length < 3)
-    //     {
-    //         _messageStore?.Add(() => Model.Name, "Value can’t be shorter than 3 characters");
-    //     }
-    //     else if (name.Length > 100)
-    //     {
-    //         _messageStore?.Add(() => Model.Name, "Value can’t be greater than 100 characters");
-    //     }
-    //     else if (Regex.IsMatch(name, "[a-z]+"))
-    //     {
-    //         _messageStore?.Add(() => Model.Name, "Can contain lowercase Latin letters, numbers, and dashes. The first character must be a letter, and the last character cannot be a dash.");
-    //     }
-    // }
-    //
-    // public void Dispose()
-    // {
-    //     if (_editContext is not null)
-    //     {
-    //         _editContext.OnValidationRequested -= HandleValidationRequested;
-    //     }
-    // }
-    //
-    // public class CreateScopeModalModel
-    // {
-    //     public string Name { get; set; }
-    // }
+
+    private async Task OnSubmitAsync()
+    {
+        if (!_valid) return;
+
+        var response = await StorageService.CreateScopeAsync(CloudId, _scopeName!);
+        response.EnsureSuccessStatusCode();
+        await CloudMenuService.UpdateAsync(CloudId);
+        TableService.ClearItems();
+    }
+
+    private void OnClick()
+    {
+        _show = true;
+    }
 }

@@ -1,9 +1,13 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using System.Text.Json.Serialization;
+using EventBus.Extensions;
+using EventBus.RabbitMQ;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Server;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Refleter.ServiceDefaults;
+using WebApp.Events;
 using WebApp.Services.Impl;
 
 namespace WebApp.Extensions;
@@ -19,8 +23,11 @@ public static class Extensions
         builder.Services.AddHttpClient<StorageService>(hc => hc.BaseAddress = new Uri("http://storageapi"))
             .AddApiVersion(1.0)
             .AddAuthToken();
+        
+        builder.AddRabbitMqEventBus("eventbus").ConfigureJsonOptions(options => options.TypeInfoResolverChain.Add(IntegrationEventContext.Default));
 
         builder.Services.AddScoped<CloudMenuService>();
+        builder.Services.AddScoped<TableService>();
     }
 
     private static void AddAuthenticationServices(this IHostApplicationBuilder builder)
@@ -62,4 +69,10 @@ public static class Extensions
         services.AddScoped<AuthenticationStateProvider, ServerAuthenticationStateProvider>();
         services.AddCascadingAuthenticationState();
     }
+}
+
+[JsonSerializable(typeof(ScopeCreatedIntegrationEvent))]
+partial class IntegrationEventContext : JsonSerializerContext
+{
+    
 }

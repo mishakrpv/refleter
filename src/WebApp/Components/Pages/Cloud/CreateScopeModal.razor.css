@@ -1,4 +1,44 @@
-﻿.modal .model__content {
+﻿.show-modal-button__text {
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.show-modal-button {
+    border-radius: 6px;
+    color: #ffffffd9;
+    background-color: #4b71d6;
+    height: 28px;
+    padding: 12px;
+    cursor: pointer;
+    box-sizing: border-box;
+    user-select: none;
+    text-align: center;
+    white-space: nowrap;
+    touch-action: manipulation;
+    justify-content: center;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    display: inline-flex;
+    position: relative;
+    overflow: visible;
+    align-items: center;
+    transition: .1s;
+}
+
+.show-modal-button:hover {
+    background-color: #638fff;
+}
+
+.show-modal-button:focus {
+    outline-color: #4b71d6;
+}
+
+.show-modal-button:active {
+    scale: 0.95;
+}
+
+.modal .model__content {
     outline: none;
     animation-timing-function: ease-out;
     animation-fill-mode: forwards;
@@ -240,4 +280,117 @@
     padding: 28px 32px;
     align-items: center;
     display: flex;
+}
+
+.dialog-footer__children {
+    flex-grow: 1;
+    align-items: center;
+    height: 100%;
+    display: flex;
+}
+
+.dialog-footer__bts-wrapper {
+    gap: 10px;
+    display: flex;
+}
+
+.dialog-footer__button {
+    min-width: 128px;
+    position: relative;
+}
+.dialog-footer__button_action_cancel {
+    
+}
+
+.button.button_pin_round-round.button {
+    border-radius: var(--g-button-border-radius, var(--_--border-radius));
+}
+
+.button {
+    --_--text-color: #ffffffd9;
+    --_--text-color-hover: var(--_--text-color);
+    --_--background-color: transparent;
+    --_--background-color-hover: #ffffff1a;
+    --_--border-width: 0;
+    --_--border-color: currentColor;
+    --_--focus-outline-color: #60809ccc;
+    --_--focus-outline-offset: 0;
+    --_--font-size: 13px;
+    font-size: inherit;
+    font-weight: var(--g-text-body-font-weight);
+    color: var(--g-button-text-color, var(--_--text-color));
+    cursor: pointer;
+    box-sizing: border-box;
+    height: var(--g-button-height, var(--_--height));
+    line-height: var(--g-button-height, var(--_--height));
+    font-size: var(--g-button-font-size, var(--_--font-size));
+    -webkit-user-select: none;
+    user-select: none;
+    text-align: center;
+    white-space: nowrap;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: #0000;
+    padding: 0;
+    padding: 0 var(--g-button-padding, var(--_--padding));
+    justify-content: center;
+    gap: var(--g-button-icon-offset, var(--_--icon-offset));
+    background: 0 0;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    transition: transform .1s ease-out, color .15s linear;
+    display: inline-flex;
+    position: relative;
+    overflow: visible;
+    transform: scale(1);
+}
+.button_view_flat {
+    
+}
+.button_size_l {
+    --_--height: 36px;
+    --_--border-radius: 8px;
+    --_--padding: 16px;
+    --_--icon-size: 16px;
+    --_--icon-offset: 8px;
+}
+.button_pin_round-round {
+    
+}
+.button_width_max {
+    width: 100%;
+}
+.button__text {
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.button_width_auto .button__text, .button_width_max .button__text {
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+}
+
+.button_disabled {
+    cursor: default;
+    pointer-events: none;
+}
+
+.button_view_action {
+    --_--text-color: #ffffffd9;
+    --_--background-color: #4b71d6;
+    --_--background-color-hover: #638fff;
+    --_--focus-outline-color: #4b71d6;
+    --_--focus-outline-offset: 1px;
+}
+
+.button.button_pin_round-round.g-button {
+    border-radius: var(--g-button-border-radius, var(--_--border-radius));
+}
+
+.button_disabled:not(.button_loading) {
+    --_--text-color: #ffffff4d;
+    --_--background-color: #ffffff12;
+    --_--background-color-hover: #ffffff12;
+    --_--border-width: 0;
 }
